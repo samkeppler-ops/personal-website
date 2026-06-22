@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samantha Keppler — Technology &amp; Operations, University of Michigan</title>
+  <meta name="description" content="Samantha Keppler is the NBD Bancorp Assistant Professor of Technology and Operations at the University of Michigan Ross School of Business, studying the relationship between business and education." />
+  <meta name="author" content="Samantha Keppler" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Samantha Keppler" />
+  <meta property="og:description" content="NBD Bancorp Assistant Professor of Technology and Operations, University of Michigan Ross School of Business." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://samanthakeppler.com" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=League+Gothic&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+            sans: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+            display: ['"League Gothic"', '"Hanken Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            ink: {
+              50: '#f6f6f4',
+              100: '#e9e8e3',
+              700: '#3f3f46',
+              800: '#27272a',
+              900: '#18181b',
+            },
+            maize: '#ffcb05',
+            wolverine: '#00274c',
+            accent: {
+              600: '#1d4ed8',
+              700: '#1e40af',
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { -webkit-font-smoothing: antialiased; }
+    /* Account for fixed mobile header / smooth-scroll anchor offset */
+    section[id] { scroll-margin-top: 5rem; }
+    @media (min-width: 1024px) { section[id] { scroll-margin-top: 2rem; } }
+    .nav-link.is-active { color: #00274c; }
+    .nav-link.is-active::before { transform: scaleX(1); }
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      height: 1.5px; width: 1.25rem;
+      background: #00274c;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+  </style>
+</head>
+
+<body class="bg-ink-50 text-ink-800 font-sans antialiased selection:bg-maize/40">
+
+  <!-- ============ MOBILE TOP BAR ============ -->
+  <header class="lg:hidden sticky top-0 z-40 border-b border-ink-100 bg-ink-50/90 backdrop-blur">
+    <div class="flex items-center justify-between px-5 py-3">
+      <a href="#home" class="font-serif text-lg font-semibold text-wolverine">Samantha Keppler</a>
+      <button id="menuBtn" aria-label="Toggle menu" class="rounded-md p-2 text-ink-700 hover:bg-ink-100">
+        <svg id="menuIcon" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/></svg>
+      </button>
+    </div>
+    <nav id="mobileNav" class="hidden border-t border-ink-100 px-5 pb-4 pt-2 text-sm font-medium">
+      <a href="#home" class="block py-2 text-ink-700 hover:text-wolverine">Home</a>
+      <a href="#research" class="block py-2 text-ink-700 hover:text-wolverine">Research</a>
+      <a href="#projects" class="block py-2 text-ink-700 hover:text-wolverine">Current Projects</a>
+      <a href="#publications" class="block py-2 text-ink-700 hover:text-wolverine">Publications</a>
+      <a href="#teaching" class="block py-2 text-ink-700 hover:text-wolverine">Teaching</a>
+      <a href="CV_June2026.pdf" class="block py-2 text-ink-700 hover:text-wolverine">Curriculum Vitae &#8599;</a>
+    </nav>
+  </header>
+
+  <div class="mx-auto flex max-w-7xl flex-col lg:flex-row">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="hidden lg:flex lg:h-screen lg:w-80 lg:flex-col lg:sticky lg:top-0 lg:shrink-0 lg:overflow-y-auto border-r border-ink-100 px-9 py-12">
+      <div class="flex h-full flex-col">
+        <!-- Identity -->
+        <div>
+          <img src="headshot.JPG" alt="Samantha Keppler"
+               class="mb-7 w-full max-w-[13rem] aspect-[4/5] rounded-2xl object-cover shadow-sm ring-1 ring-ink-100"
+               style="object-position: 50% 22%;" />
+          <h1 class="font-serif text-2xl font-semibold leading-tight text-wolverine">Samantha&nbsp;Keppler</h1>
+          <p class="mt-3 text-sm leading-relaxed text-ink-700">
+            NBD Bancorp Assistant Professor of Technology &amp; Operations
+          </p>
+          <p class="mt-1 text-sm leading-relaxed text-ink-700/80">
+            Stephen M. Ross School of Business<br />University of Michigan
+          </p>
+        </div>
+
+        <!-- Nav -->
+        <nav class="mt-10 space-y-3 text-[0.95rem] font-medium" aria-label="Primary">
+          <a href="#home"         class="nav-link relative block pl-8 text-ink-700 transition hover:text-wolverine" data-section="home">Home</a>
+          <a href="#research"     class="nav-link relative block pl-8 text-ink-700 transition hover:text-wolverine" data-section="research">Research</a>
+          <a href="#projects"     class="nav-link relative block pl-8 text-ink-700 transition hover:text-wolverine" data-section="projects">Current Projects</a>
+          <a href="#publications" class="nav-link relative block pl-8 text-ink-700 transition hover:text-wolverine" data-section="publications">Publications</a>
+          <a href="#teaching"     class="nav-link relative block pl-8 text-ink-700 transition hover:text-wolverine" data-section="teaching">Teaching</a>
+        </nav>
+
+        <!-- Contact / links -->
+        <div class="mt-auto pt-10">
+          <a href="CV_June2026.pdf"
+             class="inline-flex items-center gap-2 rounded-lg bg-wolverine px-4 py-2 text-sm font-medium text-white transition hover:bg-accent-700">
+            Curriculum Vitae
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+          </a>
+          <div class="mt-6 flex items-center gap-5 text-ink-700">
+            <a href="mailto:srmeyer@umich.edu" aria-label="Email" class="transition hover:text-wolverine">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            </a>
+            <a href="https://scholar.google.com/citations?user=1vTXCPAAAAAJ&hl=en" aria-label="Google Scholar" class="transition hover:text-wolverine">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/samantha-keppler-b1b6a156/" aria-label="LinkedIn" class="transition hover:text-wolverine">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </a>
+          </div>
+          <p class="mt-6 text-xs leading-relaxed text-ink-700/60">
+            Room R5388<br />Ann Arbor, Michigan
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <main class="min-w-0 flex-1 px-6 py-14 sm:px-10 lg:px-16 lg:py-20">
+
+      <!-- HOME / BIO -->
+      <section id="home" class="max-w-3xl">
+        <p class="mb-3 font-sans text-sm font-semibold uppercase tracking-[0.2em] text-accent-600">Welcome</p>
+        <h2 class="font-display text-5xl font-normal leading-[1.02] tracking-normal text-ink-900 sm:text-6xl">
+          Better education systems through process improvement and business innovation.
+        </h2>
+        <div class="prose prose-lg mt-8 max-w-none text-ink-700 prose-p:leading-relaxed prose-strong:text-ink-900">
+          <p>
+            I am the <strong>NBD Bancorp Assistant Professor of Technology and Operations</strong> at the
+            University of Michigan <strong>Stephen M. Ross School of Business</strong>. My research works to build
+            better education systems through process improvement and business innovation, examining the
+            relationship between business and education and the operational processes behind how education is
+            delivered. My research spans four areas:
+            (1)&nbsp;business processes and technology implementation in education;
+            (2)&nbsp;educational supply chains;
+            (3)&nbsp;the integration of services across the public and private sectors; and
+            (4)&nbsp;how frontline workers engage with artificial intelligence.
+          </p>
+          <p>
+            My operational analyses of educational processes generates broader insights about efficiency and worker resourcefulness
+            that translates to the 
+            wider business world. My research has been published in top operations-management journals, including
+            <em>Management Science</em> and <em>Manufacturing &amp; Service Operations Management</em>, and
+            featured in <em>The Wall Street Journal</em>, the <em>Financial Times</em>, and <em>NPR</em>.
+            Before earning my PhD in Industrial Engineering and Management Science from Northwestern University's
+            McCormick School of Engineering, I was a public high-school math teacher for three years in the Bronx,
+            New York, through Teach&nbsp;For&nbsp;America.
+          </p>
+        </div>
+
+        <!-- Two audiences -->
+        <div class="mt-10 grid gap-5 sm:grid-cols-2">
+          <div class="rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+            <div class="flex items-center gap-2.5">
+              <span class="inline-flex h-7 w-7 items-center justify-center rounded-md bg-maize/20 text-wolverine">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.42A12 12 0 0112 21a12 12 0 01-6.16-10.42L12 14z"/></svg>
+              </span>
+              <h3 class="font-serif text-lg font-semibold text-ink-900">For education &amp; edtech leaders</h3>
+            </div>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-700">
+              Evidence on how teachers, schools, and nonprofits actually adopt technology and stretch scarce
+              resources — and what operational improvements platforms, edtech firms, and district leaders can support to 
+              improve teacher retention and student learning.
+            </p>
+          </div>
+          <div class="rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+            <div class="flex items-center gap-2.5">
+              <span class="inline-flex h-7 w-7 items-center justify-center rounded-md bg-wolverine/10 text-wolverine">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+              </span>
+              <h3 class="font-serif text-lg font-semibold text-ink-900">For operations scholars</h3>
+            </div>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-700">
+              New theories of frontline operations, technology adoption, and
+              human&#8211;algorithm interaction — grounded in rich field data (including interviews and observations) and transferable
+              beyond education to other resource-constrained service settings.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-9 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ink-700">
+          <span class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-maize"></span> PhD, Northwestern University</span>
+          <span class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-maize"></span> Former Bronx math teacher</span>
+          <span class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-maize"></span> Ann Arbor, Michigan</span>
+        </div>
+
+        <!-- Featured in -->
+        <div class="mt-12 border-t border-ink-100 pt-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-ink-700/45">Featured in</p>
+          <div class="mt-5 flex flex-wrap items-center gap-x-7 gap-y-4 text-ink-900">
+            <span class="whitespace-nowrap font-serif text-xl">The Wall Street Journal</span>
+            <span class="whitespace-nowrap rounded-sm bg-[#fff1e5] px-2.5 py-1 font-serif text-lg text-[#33302e]">Financial&nbsp;Times</span>
+            <span class="font-display text-3xl uppercase tracking-[0.15em]">NPR</span>
+            <span class="whitespace-nowrap font-sans text-lg font-bold tracking-tight">Fast Company</span>
+            <span class="whitespace-nowrap font-sans text-lg font-bold uppercase tracking-wide">Education Week</span>
+            <span class="whitespace-nowrap font-serif text-lg italic">The Associated Press</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="my-16 border-ink-100" />
+
+      <!-- RESEARCH -->
+      <section id="research" class="max-w-3xl">
+        <h2 class="font-display text-4xl font-normal uppercase tracking-wide text-ink-900">Research</h2>
+        <p class="mt-5 text-lg leading-relaxed text-ink-700">
+          I work to build better education systems through process improvement and business innovation, studying
+          them from an operations-management perspective. Education systems are a model for understanding how
+          frontline workers get things done under significant resource constraint — which can translate into
+          operational strategy for the wider business world.
+        </p>
+
+        <p class="mt-8 text-sm text-ink-700/70">
+          Each of my research streams generates both practical insights for education leaders and
+          theoretical innovation for operations management.
+        </p>
+
+        <div class="mt-8 space-y-5">
+
+          <!-- Stream 01 -->
+          <article class="rounded-xl border border-ink-100 bg-white p-7 shadow-sm">
+            <div class="flex items-baseline gap-4">
+              <span class="font-serif text-2xl text-maize">01</span>
+              <h3 class="font-serif text-xl font-semibold text-ink-900">Educational Supply Chains</h3>
+            </div>
+            <p class="mt-2 pl-10 text-[0.95rem] leading-relaxed text-ink-700">
+              Retailers, wholesalers, and online platforms — including teacher crowdfunding — that supply
+              classrooms and the people who run them.
+            </p>
+            <div class="mt-5 grid gap-4 pl-10 sm:grid-cols-2">
+              <div class="border-l-2 border-maize pl-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-wolverine">Education insight</p>
+                <p class="mt-1 text-sm leading-relaxed text-ink-700">How teachers fund and source what their students need — and how platforms can reduce inequity and teacher turnover.</p>
+              </div>
+              <div class="border-l-2 border-wolverine/30 pl-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-accent-600">OM contribution</p>
+                <p class="mt-1 text-sm leading-relaxed text-ink-700">Empirical models of crowdfunding markets, two-sided platforms, and supply chains serving the public sector.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Stream 02 -->
+          <article class="rounded-xl border border-ink-100 bg-white p-7 shadow-sm">
+            <div class="flex items-baseline gap-4">
+              <span class="font-serif text-2xl text-maize">02</span>
+              <h3 class="font-serif text-xl font-semibold text-ink-900">Service Integration Across Sectors</h3>
+            </div>
+            <p class="mt-2 pl-10 text-[0.95rem] leading-relaxed text-ink-700">
+              Educational services that bridge the public and private sectors — delivered through relationships
+              among schools, nonprofits, and community organizations.
+            </p>
+            <div class="mt-5 grid gap-4 pl-10 sm:grid-cols-2">
+              <div class="border-l-2 border-maize pl-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-wolverine">Education insight</p>
+                <p class="mt-1 text-sm leading-relaxed text-ink-700">How schools and nonprofits build trust and manage scarce staff time to actually deliver for students.</p>
+              </div>
+              <div class="border-l-2 border-wolverine/30 pl-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-accent-600">OM contribution</p>
+                <p class="mt-1 text-sm leading-relaxed text-ink-700">Theory of inter-organizational trust, time logics, and workforce operations in mission-driven settings.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Stream 03 -->
+          <article class="rounded-xl border border-ink-100 bg-white p-7 shadow-sm">
+            <div class="flex items-baseline gap-4">
+              <span class="font-serif text-2xl text-maize">03</span>
+              <h3 class="font-serif text-xl font-semibold text-ink-900">EdTech &amp; Generative AI</h3>
+            </div>
+            <p class="mt-2 pl-10 text-[0.95rem] leading-relaxed text-ink-700">
+              Educational-technology and generative-AI companies, and how frontline workers use 
+              their tools (or not).
+            </p>
+            <div class="mt-5 grid gap-4 pl-10 sm:grid-cols-2">
+              <div class="border-l-2 border-maize pl-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-wolverine">Education insight</p>
+                <p class="mt-1 text-sm leading-relaxed text-ink-700">How teachers really use generative AI tools for productivity, and how to design technology that fit their dynamic workflows.</p>
+              </div>
+              <div class="border-l-2 border-wolverine/30 pl-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-accent-600">OM contribution</p>
+                <p class="mt-1 text-sm leading-relaxed text-ink-700">Behavioral models of algorithm reliance and human&#8211;AI collaboration, from field studies and controlled experiments.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Awards & recognition -->
+        <div class="mt-12">
+          <h3 class="font-serif text-xl font-semibold text-ink-900">Selected Recognition</h3>
+          <ul class="mt-5 space-y-3 text-[0.95rem] text-ink-700">
+            <li class="flex gap-3">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-maize"></span>
+              <span><a href="https://poetsandquants.com/2025/05/21/2025-best-40-under-40-mba-professors-samantha-keppler-ross-school-of-business-university-of-michigan/" class="font-medium text-accent-600 underline-offset-2 hover:underline">40&#8209;Under&#8209;40 Best MBA Professors</a>, Poets &amp; Quants <span class="text-ink-700/55">&middot; 2025</span></span>
+            </li>
+            <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-wolverine"></span> <span><a href="https://www.informs.org/Recognizing-Excellence/Community-Prizes/Manufacturing-and-Service-Operations-Management/M-SOM-Best-Paper-Award" class="text-accent-600 underline-offset-2 hover:underline">Best Operations Management Paper in <em>Management Science</em></a>, Finalist &mdash; MSOM Society <span class="text-ink-700/55">&middot; 2025</span></span></li>
+            <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-wolverine"></span> <span><a href="https://businessimpact.umich.edu/dei-research-awards-introduced/" class="text-accent-600 underline-offset-2 hover:underline">Diversity, Equity &amp; Inclusion Student Research Award</a> (faculty supervisor), Michigan Ross <span class="text-ink-700/55">&middot; 2025</span></span></li>
+            <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-wolverine"></span> <span><a href="https://www.informs.org/Recognizing-Excellence/Community-Prizes/Manufacturing-and-Service-Operations-Management/M-SOM-Best-Paper-Award" class="text-accent-600 underline-offset-2 hover:underline">Best Operations Management Paper in <em>Management Science</em></a>, Winner &mdash; MSOM Society <span class="text-ink-700/55">&middot; 2024</span></span></li>
+            <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-wolverine"></span> <span><a href="https://www.informs.org/Recognizing-Excellence/Community-Prizes/Service-Science-Section/IBM-Best-Student-Paper-Award-Competition" class="text-accent-600 underline-offset-2 hover:underline">Service Science Best Student Paper</a>, Finalist (co-supervisor) &mdash; INFORMS <span class="text-ink-700/55">&middot; 2024</span></span></li>
+            <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-wolverine"></span> <span><a href="https://www.informs.org/Recognizing-Excellence/Community-Prizes/Manufacturing-and-Service-Operations-Management/MSOM-Service-Management-SIG-Best-Paper-Award" class="text-accent-600 underline-offset-2 hover:underline">Service Management SIG Best Paper Award</a> &mdash; MSOM Society <span class="text-ink-700/55">&middot; 2023</span></span></li>
+            <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-wolverine"></span> <span><a href="https://www.i4replication.org/" class="text-accent-600 underline-offset-2 hover:underline">Christiaan Huygens Reproduction &amp; Replication Prize</a> &mdash; Institute for Replication <span class="text-ink-700/55">&middot; 2023</span></span></li>
+            <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-wolverine"></span> <span><a href="https://businessimpact.umich.edu/dei-research-awards-introduced/" class="text-accent-600 underline-offset-2 hover:underline">Diversity, Equity &amp; Inclusion Faculty Research Award</a>, Michigan Ross <span class="text-ink-700/55">&middot; 2023</span></span></li>
+            <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-wolverine"></span> <span><a href="https://www.informs.org/Recognizing-Excellence/Community-Prizes/Manufacturing-and-Service-Operations-Management/MSOM-Society-Award-for-Responsible-Research-in-Operations-Management" class="text-accent-600 underline-offset-2 hover:underline">Responsible Research Award</a> &mdash; MSOM Society <span class="text-ink-700/55">&middot; 2022</span></span></li>
+            <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-wolverine"></span> <span>Applied Research Challenge, Winner &mdash; POMS <span class="text-ink-700/55">&middot; 2022</span></span></li>
+            <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-wolverine"></span> <span><a href="https://www.ft.com/responsible-business-education" class="text-accent-600 underline-offset-2 hover:underline">Responsible Business Education Award</a>, Finalist &mdash; <em>Financial Times</em> <span class="text-ink-700/55">&middot; 2021</span></span></li>
+          </ul>
+          <p class="mt-6 text-sm leading-relaxed text-ink-700/80">
+            Work featured in <em>The Wall Street Journal</em>, the <em>Financial Times</em>, <em>NPR</em>,
+            <em>Education Week</em>, <em>K&#8211;12 Dive</em>, and <em>District Administration</em>.
+          </p>
+        </div>
+      </section>
+
+      <hr class="my-16 border-ink-100" />
+
+      <!-- CURRENT PROJECTS -->
+      <section id="projects" class="max-w-3xl">
+        <h2 class="font-display text-4xl font-normal uppercase tracking-wide text-ink-900">Current Projects</h2>
+        <p class="mt-5 text-lg leading-relaxed text-ink-700">
+          A look at what I am working on now — papers under review and in preparation, plus earlier-stage projects
+          in data collection and analysis, many in collaboration with schools, districts, and education
+          organizations.
+        </p>
+
+        <h3 class="mt-10 font-serif text-xl font-semibold text-ink-900">Working Papers</h3>
+        <div class="mt-5 space-y-5">
+
+          <article class="rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+            <span class="inline-block rounded-full bg-wolverine/10 px-2.5 py-0.5 text-xs font-medium text-wolverine">Major revision &middot; Educational Administration Quarterly</span>
+            <h4 class="mt-3 font-serif text-lg font-semibold text-ink-900">School Partnering Without Principals? A Descriptive Network Analysis of Managing External Relationships in an Urban Education System</h4>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">A network analysis of how schools manage relationships with outside organizations — and what changes when principals are not the central brokers. The study compares partnering patterns across different school types to understand how external relationships are really built and sustained.</p>
+            <p class="mt-3 text-sm text-ink-700/80">With <a href="https://sesp.northwestern.edu/people/faculty/james-p-spillane.html" class="text-accent-600 underline-offset-2 hover:underline">James Spillane</a> (Northwestern).</p>
+          </article>
+
+          <article class="rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+            <span class="inline-block rounded-full bg-wolverine/10 px-2.5 py-0.5 text-xs font-medium text-wolverine">In preparation &middot; Management Science</span>
+            <h4 class="mt-3 font-serif text-lg font-semibold text-ink-900">The Teacher&rsquo;s Knapsack: Generative AI and Teacher Productivity</h4>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">Frames teacher productivity as a resource-allocation problem — a &ldquo;knapsack&rdquo; of limited time and attention — to study where generative AI genuinely helps teachers and where it adds new burdens, combining field evidence with operational modeling of how teachers fit AI into their work.</p>
+            <p class="mt-3 text-sm text-ink-700/80">With <a href="https://haas.berkeley.edu/faculty/park-sinchaisri/" class="text-accent-600 underline-offset-2 hover:underline">Park Sinchaisri</a> (UC Berkeley) and <a href="https://www.stern.nyu.edu/faculty/bio/clare-snyder" class="text-accent-600 underline-offset-2 hover:underline">Clare Snyder</a> (NYU Stern).</p>
+          </article>
+
+          <article class="rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+            <span class="inline-block rounded-full bg-wolverine/10 px-2.5 py-0.5 text-xs font-medium text-wolverine">Under review &middot; M&amp;SOM</span>
+            <h4 class="mt-3 font-serif text-lg font-semibold text-ink-900">Improving Emergent Coordination in Educational Service Networks</h4>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">Examines how coordination emerges — or breaks down — among the many organizations that together deliver services to students, and identifies mechanisms that help service networks coordinate effectively without relying on top-down control.</p>
+            <p class="mt-3 text-sm text-ink-700/80">With <a href="https://tmp.ucsb.edu/people/paul-leonardi" class="text-accent-600 underline-offset-2 hover:underline">Paul Leonardi</a> (UC Santa Barbara).</p>
+          </article>
+
+          <article class="rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="inline-block rounded-full bg-wolverine/10 px-2.5 py-0.5 text-xs font-medium text-wolverine">In preparation &middot; Management Science</span>
+              <span class="inline-block rounded-full bg-maize/25 px-2.5 py-0.5 text-xs font-medium text-wolverine">Ross DEI Student Research Award 2025</span>
+            </div>
+            <h4 class="mt-3 font-serif text-lg font-semibold text-ink-900">Worker Reactions to (Fair) Algorithms</h4>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">An experimental study of how workers respond when algorithms are explicitly designed to be &ldquo;fair,&rdquo; and whether fairness changes their reliance on, trust in, and effort alongside the algorithm.</p>
+            <p class="mt-3 text-sm text-ink-700/80">With <a href="https://www.stern.nyu.edu/faculty/bio/clare-snyder" class="text-accent-600 underline-offset-2 hover:underline">Clare Snyder</a> (NYU Stern) and <a href="https://michiganross.umich.edu/faculty-research/faculty/stephen-leider" class="text-accent-600 underline-offset-2 hover:underline">Stephen Leider</a> (Michigan Ross).</p>
+          </article>
+
+        </div>
+
+        <h3 class="mt-12 font-serif text-xl font-semibold text-ink-900">Early-Stage Projects</h3>
+        <p class="mt-2 text-sm text-ink-700/70">In design, data collection, or analysis.</p>
+        <div class="mt-5 space-y-5">
+
+          <article class="rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+            <h4 class="font-serif text-lg font-semibold text-ink-900">School Supply Investments and State Student Learning Recovery after COVID-19: A Natural Experiment</h4>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">A natural experiment testing whether investments in classroom supplies contributed to states&rsquo; student-learning recovery after the pandemic.</p>
+            <p class="mt-3 text-sm text-ink-700/80">With Yunnan He (Michigan Ross) and <a href="https://michiganross.umich.edu/faculty-research/faculty/jun-li" class="text-accent-600 underline-offset-2 hover:underline">Jun Li</a> (Michigan Ross).</p>
+          </article>
+
+          <article class="rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+            <h4 class="font-serif text-lg font-semibold text-ink-900">Designing School Supply Chains for Efficiency</h4>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">Develops models for how schools and districts can structure their supply chains to get the right materials into classrooms more reliably and efficiently.</p>
+            <p class="mt-3 text-sm text-ink-700/80">With Rana Yoner (Michigan Ross) and <a href="https://michiganross.umich.edu/faculty-research/faculty/lennart-baardman" class="text-accent-600 underline-offset-2 hover:underline">Lennart Baardman</a> (Michigan Ross).</p>
+          </article>
+
+          <article class="rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+            <h4 class="font-serif text-lg font-semibold text-ink-900">Task Selection and Execution with Generative AI: Experimental Evidence</h4>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">Experimental evidence on how people decide which tasks to hand to generative AI and how they carry them out — clarifying where AI changes the nature of frontline work.</p>
+            <p class="mt-3 text-sm text-ink-700/80">With <a href="https://haas.berkeley.edu/faculty/park-sinchaisri/" class="text-accent-600 underline-offset-2 hover:underline">Park Sinchaisri</a> (UC Berkeley) and <a href="https://www.stern.nyu.edu/faculty/bio/clare-snyder" class="text-accent-600 underline-offset-2 hover:underline">Clare Snyder</a> (NYU Stern).</p>
+          </article>
+
+          <article class="rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+            <h4 class="font-serif text-lg font-semibold text-ink-900">Optimal AI Pilot Allocation and its Limits</h4>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">Studies how organizations should allocate scarce opportunities to pilot AI tools — and where the limits of pilot-based learning lie.</p>
+            <p class="mt-3 text-sm text-ink-700/80">With <a href="https://som.yale.edu/faculty-research/faculty-directory/faidra-monachou" class="text-accent-600 underline-offset-2 hover:underline">Faidra Monachou</a> (Yale SOM).</p>
+          </article>
+
+        </div>
+      </section>
+
+      <hr class="my-16 border-ink-100" />
+
+      <!-- PUBLICATIONS -->
+      <section id="publications" class="max-w-3xl">
+        <h2 class="font-display text-4xl font-normal uppercase tracking-wide text-ink-900">Publications</h2>
+        <p class="mt-4 text-sm text-ink-700/80">
+          See <a href="https://scholar.google.com/citations?user=1vTXCPAAAAAJ&hl=en" class="font-medium text-accent-600 underline-offset-2 hover:underline">Google&nbsp;Scholar</a> for the complete and most current list.
+        </p>
+
+        <!-- Journal Articles -->
+        <h3 class="mt-10 font-serif text-xl font-semibold text-ink-900">Journal Articles</h3>
+        <ol class="mt-5 space-y-7">
+          <li class="group">
+            <p class="text-ink-900"><span class="font-medium">Snyder, C., <strong>Keppler, S.</strong>, &amp; Leider, S.</span> (2026). Algorithm Reliance, Fast and Slow. <em class="text-ink-700">Management Science</em>, 72(1), 368&#8211;385.</p>          </li>
+          <li>
+            <p class="text-ink-900"><span class="font-medium"><strong>Keppler, S.</strong>, Li, J., &amp; Wu, A.</span> (2025). Stopping the Revolving Door: An Empirical and Textual Study of Crowdfunding and Teacher Turnover. <em class="text-ink-700">Manufacturing &amp; Service Operations Management</em>, 27(6), 1683&#8211;2035.</p>
+          </li>
+          <li>
+            <p class="text-ink-900"><span class="font-medium"><strong>Keppler, S. M.</strong>, &amp; Smilowitz, K. R.</span> (2024). Time is Not Money: Time Logics and Workforce Operations Within School&#8211;Nonprofit Relationships. <em class="text-ink-700">Production and Operations Management</em>, 33(12), 2362&#8211;2380.</p>          </li>
+          <li>
+            <p class="text-ink-900"><span class="font-medium"><strong>Keppler, S. M.</strong></span> (2024). Little's Law and Educational Inequality: A Comparative Case Study of Teacher Workaround Productivity. <em class="text-ink-700">Management Science</em>, 70(5), 2756&#8211;2778.</p>          </li>
+          <li>
+            <p class="text-ink-900"><span class="font-medium">Davis, A., Flicker, B., Hyndman, K., Katok, E., <strong>Keppler, S.</strong>, Leider, S., Long, X., &amp; Tong, J.</span> (2023). A Replication Study of Operations Management Experiments in Management Science. <em class="text-ink-700">Management Science</em>, 69(9), 4977&#8211;4991.</p>          </li>
+          <li>
+            <p class="text-ink-900"><span class="font-medium"><strong>Keppler, S. M.</strong>, &amp; Leonardi, P. M.</span> (2023). Building Relational Confidence in Remote and Hybrid Work Arrangements: Novel Ways to Use Digital Technologies to Foster Knowledge Sharing. <em class="text-ink-700">Journal of Computer-Mediated Communication</em>, 28(4), zmad020.</p>          </li>
+          <li>
+            <p class="text-ink-900"><span class="font-medium"><strong>Keppler, S.</strong>, Li, J., &amp; Wu, A.</span> (2022). Crowdfunding the Front Lines: An Empirical Study of Teacher-Driven School Improvement. <em class="text-ink-700">Management Science</em>, 68(12), 8515&#8211;9218.</p>          </li>
+          <li>
+            <p class="text-ink-900"><span class="font-medium"><strong>Keppler, S. M.</strong>, Smilowitz, K. R., &amp; Leonardi, P. M.</span> (2021). Contextual Trustworthiness of Organizational Partners: Evidence from Nine School Networks. <em class="text-ink-700">Manufacturing &amp; Service Operations Management</em>, 23(4), 974&#8211;988.</p>          </li>
+        </ol>
+
+        <!-- Conference Proceedings -->
+        <h3 class="mt-12 font-serif text-xl font-semibold text-ink-900">Conference Proceedings</h3>
+        <ol class="mt-5 space-y-7">
+          <li>
+            <p class="text-ink-900"><span class="font-medium"><strong>Keppler, S.</strong>, Sinchaisri, P., &amp; Snyder, C.</span> (2025). Making ChatGPT Work For Me. <em class="text-ink-700">Proceedings of the ACM on Human-Computer Interaction (CSCW)</em>, 9(CSCW2), 1&#8211;23.</p>
+          </li>
+        </ol>
+
+        <!-- Book Chapters -->
+        <h3 class="mt-12 font-serif text-xl font-semibold text-ink-900">Book Chapters</h3>
+        <ol class="mt-5 space-y-7">
+          <li>
+            <p class="text-ink-900"><span class="font-medium"><strong>Keppler, S. M.</strong></span> (2024). Rethinking Frontline Nonprofit Operations: The Role of Aggregator Organizations. In G.&nbsp;Berenguer&nbsp;Falguera &amp; M.&nbsp;Sohoni (Eds.), <em class="text-ink-700">Nonprofit Operations and Supply Chain Management: Theory and Practice</em>. Springer.</p>
+          </li>
+          <li>
+            <p class="text-ink-900"><span class="font-medium">Smilowitz, K. R., &amp; <strong>Keppler, S. M.</strong></span> (2020). On the Use of Operations Research and Management in Public Education Systems. In C.&nbsp;Druehl &amp; W.&nbsp;Elmaghraby (Eds.), <em class="text-ink-700">INFORMS TutORials in Operations Research</em> (pp.&nbsp;84&#8211;105). INFORMS.</p>
+          </li>
+        </ol>
+      </section>
+
+      <hr class="my-16 border-ink-100" />
+
+      <!-- TEACHING -->
+      <section id="teaching" class="max-w-3xl">
+        <h2 class="font-display text-4xl font-normal uppercase tracking-wide text-ink-900">Teaching</h2>
+        <p class="mt-5 text-lg leading-relaxed text-ink-700">
+          I teach operations management to MBA students at the Ross School of Business, with an emphasis on
+          analytical reasoning, critical thinking, and the practical decisions managers actually face.
+        </p>
+
+        <div class="mt-8 space-y-5">
+
+          <article class="rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="inline-block rounded-full bg-wolverine/10 px-2.5 py-0.5 text-xs font-medium text-wolverine">MBA Core</span>
+              <span class="inline-block rounded-full bg-ink-100 px-2.5 py-0.5 text-xs font-medium text-ink-700">2026&ndash;2027</span>
+            </div>
+            <h3 class="mt-3 font-serif text-lg font-semibold text-ink-900">
+              <a href="https://michiganross.umich.edu/courses/operations-management-9128" class="hover:text-accent-700 underline-offset-2 hover:underline">TO 552 &middot; Operations Management</a>
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">
+              The MBA core course in operations management, covering how organizations design and improve the
+              processes that deliver their products and services.
+            </p>
+          </article>
+
+          <article class="rounded-xl border border-ink-100 bg-white p-6 shadow-sm">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="inline-block rounded-full bg-wolverine/10 px-2.5 py-0.5 text-xs font-medium text-wolverine">MBA Elective</span>
+              <span class="inline-block rounded-full bg-maize/25 px-2.5 py-0.5 text-xs font-medium text-wolverine">New &middot; First offered 2026&ndash;2027</span>
+            </div>
+            <h3 class="mt-3 font-serif text-lg font-semibold text-ink-900">TO 735 &middot; Critical Thinking and Decision Making for Technology and Operations Consulting</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">
+              A new elective I developed with <a href="https://michiganross.umich.edu/faculty-research/faculty/hyun-soo-ahn" class="text-accent-700 underline-offset-2 hover:underline">Hyun-Soo Ahn</a> to equip students with the critical-thinking and
+              decision-making capabilities for careers in operations consulting and tech. Each session takes on a
+              major topic — globalization and the world economy, analytics and data science, supply-chain risk,
+              AI and change management, digital transformation, and sustainability — and builds skills such as
+              stance-taking, analytical reasoning, questioning, moving forward under ambiguity, and data
+              storytelling. The course features panels and lectures from managers working at leading consulting
+              and technology firms.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="mt-20 border-t border-ink-100 pt-8 text-sm text-ink-700/60">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p>&copy; <span id="year"></span> Samantha Keppler</p>
+          <div class="flex gap-5">
+            <a href="mailto:srmeyer@umich.edu" class="hover:text-wolverine">Email</a>
+            <a href="https://scholar.google.com/citations?user=1vTXCPAAAAAJ&hl=en" class="hover:text-wolverine">Google Scholar</a>
+            <a href="CV_June2026.pdf" class="hover:text-wolverine">CV</a>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn.addEventListener('click', () => mobileNav.classList.toggle('hidden'));
+    mobileNav.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => mobileNav.classList.add('hidden'))
+    );
+
+    // Scroll-spy for sidebar active state
+    const links = document.querySelectorAll('.nav-link');
+    const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          links.forEach(l => l.classList.toggle('is-active', l.dataset.section === id));
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    sections.forEach(s => s && observer.observe(s));
+  </script>
+</body>
+</html>

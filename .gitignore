@@ -1,0 +1,16 @@
+# Claude Code local settings
+.claude/
+
+# macOS
+.DS_Store
+
+# Office temp/lock files
+~$*
+
+# Source materials — not part of the published site
+*.docx
+*.textClipping
+bibliography.txt
+
+# Superseded CV (site links CV_June2026.pdf)
+CV_March2026.pdf
