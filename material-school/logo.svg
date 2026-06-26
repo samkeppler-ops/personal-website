@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Material School logo">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#ff6f5e"/>
+  <g transform="rotate(35 32 32)">
+    <rect x="27" y="13" width="10" height="6" rx="2" fill="#ffd1d6"/>   <!-- eraser -->
+    <rect x="27" y="19" width="10" height="3" fill="#eee7da"/>          <!-- ferrule -->
+    <rect x="27" y="22" width="10" height="19" fill="#fffaf0"/>         <!-- body -->
+    <path d="M27 41 H37 L32 52 Z" fill="#f4d9a0"/>                       <!-- wood tip -->
+    <path d="M30.2 47.6 H33.8 L32 52 Z" fill="#3b3a45"/>                 <!-- graphite -->
+  </g>
+</svg>

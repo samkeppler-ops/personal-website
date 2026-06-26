@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <title>EOQ Lab — Education &amp; Operations Quality Lab</title>
+  <meta name="description" content="The Education & Operations Quality (EOQ) Lab is a student group collecting and analyzing operations data on education processes, led by Professor Samantha Keppler at the University of Michigan Ross School of Business." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"Space Mono"', 'monospace'],
+          },
+          colors: {
+            navy: '#00274c',
+            teal: '#0e7490',
+            maize: '#ffcb05',
+            slate: { 50: '#f8fafc', 100: '#f1f5f9', 600: '#475569', 800: '#1e293b', 900: '#0f172a' },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { -webkit-font-smoothing: antialiased; }
+    .grid-bg {
+      background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+  </style>
+</head>
+
+<body class="bg-white font-sans text-slate-800 antialiased">
+
+  <!-- Top bar -->
+  <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <a href="../" class="text-sm font-medium text-slate-600 transition hover:text-navy">&larr; Samantha Keppler</a>
+      <span class="flex items-center gap-2">
+        <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
+          <rect x="2" y="2" width="60" height="60" rx="14" fill="#00274c"/>
+          <path d="M14 14 V50 H52" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14 20 L26 47 L26 20 L38 47 L38 24 L50 47" fill="none" stroke="#ffcb05" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="14" cy="20" r="2.8" fill="#22d3ee"/>
+        </svg>
+        <span class="font-display text-sm font-bold tracking-tight text-navy">EOQ&nbsp;Lab</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="grid-bg border-b border-slate-100">
+    <div class="mx-auto max-w-5xl px-6 py-20 sm:py-28">
+      <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 font-mono text-xs uppercase tracking-widest text-teal">
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-teal"></span> Research Lab
+      </div>
+
+      <!-- EOQ monogram -->
+      <div class="mt-8 font-display text-7xl font-bold leading-none sm:text-8xl">
+        <span class="text-teal">E</span><span class="text-maize">O</span><span class="text-teal">Q</span>
+      </div>
+
+      <h1 class="mt-4 font-display text-4xl font-bold leading-[1.1] tracking-tight text-navy sm:text-5xl">
+        <span class="text-teal">E</span>ducation &amp; <span class="text-teal">O</span>perations <span class="text-teal">Q</span>uality Lab
+      </h1>
+
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
+        Our mission: to catalyze innovation in education operations research by identifying the field's most
+        critical questions — and generating the data to solve them.
+      </p>
+
+      <!-- EOQ wordplay callout -->
+      <div class="mt-8 max-w-2xl rounded-xl border border-teal/30 bg-teal/5 p-5">
+        <p class="font-mono text-xs uppercase tracking-widest text-teal">Why &ldquo;EOQ&rdquo;?</p>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+          <span class="font-semibold text-navy">EOQ</span> is also the <span class="font-semibold text-navy">Economic Order Quantity</span> &mdash;
+          the classic inventory model at the heart of operations management. We borrow the name to bring that same
+          operational lens to education.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we do -->
+  <section class="mx-auto max-w-5xl px-6 py-20">
+    <h2 class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-teal">What we do</h2>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2">
+      <div class="rounded-xl border border-slate-200 p-6">
+        <div class="font-mono text-2xl text-navy">01</div>
+        <h3 class="mt-3 font-display text-lg font-semibold text-slate-900">Identify critical problems</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">Through qualitative research and conversations with districts, teachers, and education leaders, we surface the operational problems that matter most.</p>
+      </div>
+      <div class="rounded-xl border border-slate-200 p-6">
+        <div class="font-mono text-2xl text-navy">02</div>
+        <h3 class="mt-3 font-display text-lg font-semibold text-slate-900">Collect data to solve them</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">We gather the data needed to tackle those problems — which often means creative approaches and looking in places no one else thinks to look.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Focus areas -->
+  <section class="border-y border-slate-100 bg-slate-50">
+    <div class="mx-auto max-w-5xl px-6 py-20">
+      <h2 class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-teal">Focus areas</h2>
+      <p class="mt-4 max-w-2xl text-slate-600">Core operations-management problems, studied in the context of education:</p>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-xl border border-slate-200 bg-white p-6">
+          <div class="font-mono text-sm text-teal">01</div>
+          <h3 class="mt-2 font-display text-lg font-semibold text-slate-900">Procurement &amp; sourcing</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">How schools and districts source, purchase, and fund the materials students need.</p>
+        </div>
+        <div class="rounded-xl border border-slate-200 bg-white p-6">
+          <div class="font-mono text-sm text-teal">02</div>
+          <h3 class="mt-2 font-display text-lg font-semibold text-slate-900">Contracts &amp; incentives</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Designing agreements — with vendors, partners, and staff — that align incentives and deliver results.</p>
+        </div>
+        <div class="rounded-xl border border-slate-200 bg-white p-6">
+          <div class="font-mono text-sm text-teal">03</div>
+          <h3 class="mt-2 font-display text-lg font-semibold text-slate-900">Technology implementation</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">How new tools, including AI, are adopted and put to work in everyday school operations.</p>
+        </div>
+        <div class="rounded-xl border border-slate-200 bg-white p-6">
+          <div class="font-mono text-sm text-teal">04</div>
+          <h3 class="mt-2 font-display text-lg font-semibold text-slate-900">Service integration</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Coordinating services across schools, nonprofits, and community organizations.</p>
+        </div>
+        <div class="rounded-xl border border-slate-200 bg-white p-6">
+          <div class="font-mono text-sm text-teal">05</div>
+          <h3 class="mt-2 font-display text-lg font-semibold text-slate-900">Spatial &amp; network design</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">How districts design facilities, classrooms, and boundaries to support learning.</p>
+        </div>
+        <div class="rounded-xl border border-slate-200 bg-white p-6">
+          <div class="font-mono text-sm text-teal">06</div>
+          <h3 class="mt-2 font-display text-lg font-semibold text-slate-900">Frontline workers</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Supporting teachers and staff — and helping them work effectively and productively.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="mx-auto max-w-5xl px-6 py-20">
+    <h2 class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-teal">Team</h2>
+    <p class="mt-6 max-w-2xl text-slate-600">
+      Directed by <a href="../" class="font-medium text-navy underline-offset-2 hover:underline">Samantha Keppler</a>,
+      NBD Bancorp Assistant Professor of Technology &amp; Operations, University of Michigan Ross School of Business.
+    </p>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2">
+      <div class="rounded-xl border border-slate-200 bg-white p-6">
+        <h3 class="font-display text-lg font-semibold text-slate-900">Research Assistants</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">Building a repository of education operations data on districts, schools, teachers, and students.</p>
+      </div>
+      <div class="rounded-xl border border-slate-200 bg-white p-6">
+        <h3 class="font-display text-lg font-semibold text-slate-900">Faculty &amp; Doctoral Students</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">Cutting-edge research on educational procurement and supply chains, and generative-AI implementation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get involved -->
+  <section class="border-t border-slate-100 bg-navy text-white">
+    <div class="mx-auto max-w-5xl px-6 py-16">
+      <h2 class="font-display text-3xl font-bold tracking-tight">Interested in joining?</h2>
+      <p class="mt-3 max-w-2xl text-slate-100/80">
+        The EOQ Lab brings together students and faculty who want to collect data, analyze it, and grow the
+        scholarship of education operations together.
+      </p>
+      <a href="mailto:srmeyer@umich.edu" class="mt-6 inline-block rounded-lg bg-maize px-5 py-2.5 text-sm font-semibold text-navy transition hover:bg-white">Get in touch</a>
+    </div>
+  </section>
+
+  <footer class="mx-auto max-w-5xl px-6 py-10 text-sm text-slate-400">
+    <a href="../" class="hover:text-navy">&larr; Back to samanthakeppler.com</a>
+  </footer>
+
+</body>
+</html>

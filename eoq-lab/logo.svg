@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="EOQ Lab logo">
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#00274c"/>
+  <!-- axes -->
+  <path d="M14 14 V50 H52" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2" stroke-linecap="round"/>
+  <!-- EOQ inventory sawtooth (restock + depletion) -->
+  <path d="M14 20 L26 47 L26 20 L38 47 L38 24 L50 47" fill="none" stroke="#ffcb05" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="14" cy="20" r="2.8" fill="#22d3ee"/>
+</svg>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <title>Material School — giving kids a material education in an AI world</title>
+  <meta name="description" content="Material School turns research on education operations into practical, plain-language help — so district leaders, teachers, and parents can give kids a material education in an AI world. Founded by Professor Samantha Keppler. Home to the Material School podcast." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'system-ui', 'sans-serif'],
+            body: ['Nunito', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream: '#fffaf0',
+            sunshine: '#ffcf4d',
+            coral: '#ff6f5e',
+            sky: '#4ea8de',
+            leaf: '#7cc242',
+            grape: '#9b6dd1',
+            ink: '#3b3a45',
+            inksoft: '#6e6a78',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { -webkit-font-smoothing: antialiased; }
+    body { background-color: #fffaf0; }
+    /* hand-drawn-ish underline */
+    .squiggle { text-decoration: underline wavy #ffcf4d; text-underline-offset: 6px; text-decoration-thickness: 3px; }
+  </style>
+</head>
+
+<body class="font-body text-ink antialiased">
+
+  <!-- Top bar -->
+  <header class="sticky top-0 z-30 border-b border-sunshine/40 bg-cream/90 backdrop-blur">
+    <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+      <a href="../" class="text-sm font-semibold text-inksoft transition hover:text-coral">&larr; Samantha Keppler</a>
+      <span class="flex items-center gap-2">
+        <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
+          <rect x="2" y="2" width="60" height="60" rx="16" fill="#ff6f5e"/>
+          <g transform="rotate(35 32 32)">
+            <rect x="27" y="13" width="10" height="6" rx="2" fill="#ffd1d6"/>
+            <rect x="27" y="19" width="10" height="3" fill="#eee7da"/>
+            <rect x="27" y="22" width="10" height="19" fill="#fffaf0"/>
+            <path d="M27 41 H37 L32 52 Z" fill="#f4d9a0"/>
+            <path d="M30.2 47.6 H33.8 L32 52 Z" fill="#3b3a45"/>
+          </g>
+        </svg>
+        <span class="font-display text-base font-bold text-ink">Material&nbsp;School</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <!-- playful blobs -->
+    <div class="pointer-events-none absolute -right-16 -top-10 h-56 w-56 rounded-full bg-sky/20"></div>
+    <div class="pointer-events-none absolute right-24 top-32 h-20 w-20 rounded-full bg-leaf/30"></div>
+    <div class="pointer-events-none absolute -left-10 top-24 h-28 w-28 rounded-full bg-coral/15"></div>
+
+    <div class="relative mx-auto max-w-4xl px-6 py-20 sm:py-24">
+      <span class="inline-block rounded-full bg-sunshine/30 px-4 py-1.5 font-display text-sm font-semibold text-ink">🍎 An initiative by Samantha Keppler</span>
+      <h1 class="mt-6 font-display text-6xl font-bold leading-[1.0] text-ink sm:text-7xl">
+        Material<br />School
+      </h1>
+      <p class="mt-6 max-w-2xl font-display text-2xl font-medium leading-snug text-ink">
+        Giving kids a <span class="squiggle">material education</span> in an AI world. 🎨📚
+      </p>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-inksoft">
+        Material School combines research with the experiences of teachers and parents to give clear, practical guidance about how to get kiddos the supplies and materials they need to learn and thrive.
+      </p>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="mx-auto max-w-4xl px-6 py-14">
+    <h2 class="text-center font-display text-3xl font-semibold text-ink">Who it's for</h2>
+    <p class="mx-auto mt-3 max-w-xl text-center text-inksoft">Real decision-support for the people making everyday choices for kids.</p>
+    <div class="mt-10 grid gap-6 sm:grid-cols-3">
+      <div class="rounded-3xl border-2 border-sky/30 bg-sky/5 p-7 text-center">
+        <div class="text-5xl">🏫</div>
+        <h3 class="mt-4 font-display text-xl font-semibold text-ink">Education Leaders</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">How to prioritize material learning by buying physical supplies for kiddos cheaply and quickly.</p>
+      </div>
+      <div class="rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-7 text-center">
+        <div class="text-5xl">👩‍🏫</div>
+        <h3 class="mt-4 font-display text-xl font-semibold text-ink">Teachers</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">Practical, evidence-backed recommendations for creating a material classroom.</p>
+      </div>
+      <div class="rounded-3xl border-2 border-coral/30 bg-coral/5 p-7 text-center">
+        <div class="text-5xl">👪</div>
+        <h3 class="mt-4 font-display text-xl font-semibold text-ink">Parents</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">How to support a hands-on, material education at home — beyond the screens.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Manifesto -->
+  <section class="bg-sunshine/15">
+    <div class="mx-auto max-w-4xl px-6 py-16">
+      <h2 class="font-display text-3xl font-semibold text-ink">Our manifesto 💡</h2>
+      <div class="mt-5 max-w-2xl space-y-5 text-lg leading-relaxed text-inksoft">
+        <p>
+          It feels like the world is rushing to put everything on a screen. Material School is about the <strong class="text-ink">material</strong> —
+          the books, paper, supplies, spaces, and hands-on tools that help children learn — and how to give every
+          student a material education in the AI era.
+        </p>
+      </div>
+      <blockquote class="mt-6 max-w-2xl border-l-4 border-coral pl-5 font-display text-xl font-medium italic leading-snug text-ink">
+        Let's figure out, together, the physical tools, materials, and supplies our kids most need to learn. By
+        pairing rigorous research with real stories from the front lines, we're building a material school for the
+        AI era.
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Three pillars -->
+  <section class="mx-auto max-w-4xl px-6 py-16">
+    <h2 class="font-display text-3xl font-semibold text-ink">Three pillars</h2>
+    <div class="mt-8 grid gap-6 sm:grid-cols-3">
+      <div class="rounded-3xl border-2 border-sky/30 bg-sky/5 p-7">
+        <div class="text-4xl">🎒</div>
+        <h3 class="mt-4 font-display text-xl font-semibold text-ink">Smarter supply choices</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">Understanding which supplies and materials students, teachers, and schools most need.</p>
+      </div>
+      <div class="rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-7">
+        <div class="text-4xl">🚚</div>
+        <h3 class="mt-4 font-display text-xl font-semibold text-ink">Efficient procurement</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">Getting those materials where they're needed quickly and affordably.</p>
+      </div>
+      <div class="rounded-3xl border-2 border-grape/30 bg-grape/5 p-7">
+        <div class="text-4xl">🧩</div>
+        <h3 class="mt-4 font-display text-xl font-semibold text-ink">Technology supports</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">Using technology and AI - often behind the scenes by adults — to strengthen hands-on, material learning.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The series -->
+  <section class="mx-auto max-w-4xl px-6 py-16">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div>
+        <p class="font-display text-sm font-semibold uppercase tracking-widest text-coral">🎙️ Tune in</p>
+        <h2 class="mt-2 font-display text-4xl font-bold text-ink">Three ways to listen</h2>
+      </div>
+      <span class="rounded-full bg-coral px-4 py-1.5 font-display text-sm font-semibold text-white">Coming soon</span>
+    </div>
+    <p class="mt-5 max-w-2xl leading-relaxed text-inksoft">
+      Material School comes to life in three formats about the school materials — each named for a
+      classroom ritual you probably know.
+    </p>
+
+    <div class="mt-10 space-y-6">
+
+      <!-- Show & Tell -->
+      <article class="rounded-3xl border-2 border-sky/30 bg-sky/5 p-7">
+        <div class="flex items-start gap-4">
+          <div class="text-4xl">📮</div>
+          <div class="flex-1">
+            <h3 class="font-display text-2xl font-semibold text-ink">Show &amp; Tell</h3>
+            <p class="mt-2 leading-relaxed text-inksoft">Real stories from teachers, principals, and school staff about the supplies in their classrooms — the ones that changed everything, and the ones that flopped. Sent in by you.</p>
+            <div class="mt-4 rounded-2xl bg-white/70 p-4 text-sm">
+              <p class="font-bold text-ink">📣 Share your story</p>
+              <p class="mt-1 text-inksoft">Email <a href="mailto:materialschoolusa@gmail.com" class="font-semibold text-sky underline-offset-2 hover:underline">materialschoolusa@gmail.com</a> &mdash; or leave a voicemail at <a href="tel:+13133067476" class="font-semibold text-sky underline-offset-2 hover:underline">(313)&nbsp;306-7476</a>.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Report Card -->
+      <article class="rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-7">
+        <div class="flex items-start gap-4">
+          <div class="text-4xl">📋</div>
+          <div class="flex-1">
+            <h3 class="font-display text-2xl font-semibold text-ink">Report Card</h3>
+            <p class="mt-2 leading-relaxed text-inksoft">I take a single classroom supply and run it through the material school framework---Buying One versus Buying Many---and give it a grade.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Guest Speakers -->
+      <article class="rounded-3xl border-2 border-grape/30 bg-grape/5 p-7">
+        <div class="flex items-start gap-4">
+          <div class="text-4xl">🎤</div>
+          <div class="flex-1">
+            <h3 class="font-display text-2xl font-semibold text-ink">Guest Speakers</h3>
+            <p class="mt-2 leading-relaxed text-inksoft">Conversations with experts who have something important to say about what it will take to make sure our kiddos get a material education. </p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="mt-6 text-sm italic text-inksoft/70">First episodes coming soon — check back to listen. 🎧</p>
+  </section>
+
+  <!-- Get involved -->
+  <section class="mx-auto max-w-4xl px-6 pb-20">
+    <div class="rounded-3xl border-2 border-grape/30 bg-grape/5 p-8 text-center sm:p-10">
+      <div class="text-4xl">💌</div>
+      <h2 class="mt-3 font-display text-3xl font-semibold text-ink">Say hello</h2>
+      <p class="mx-auto mt-3 max-w-xl leading-relaxed text-inksoft">
+        Material School is founded by <a href="../" class="font-semibold text-coral underline-offset-2 hover:underline">Samantha Keppler</a>.
+        Want to collaborate, suggest a podcast guest, or just chat? I'd love to hear from you.
+      </p>
+      <a href="mailto:materialschoolusa@gmail.com" class="mt-6 inline-block rounded-full bg-coral px-6 py-3 font-display text-base font-semibold text-white transition hover:bg-ink">Get in touch →</a>
+    </div>
+  </section>
+
+  <footer class="mx-auto max-w-4xl px-6 py-10 text-sm text-inksoft/70">
+    <a href="../" class="hover:text-coral">&larr; Back to samanthakeppler.com</a>
+  </footer>
+
+</body>
+</html>
