@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../logo.svg" type="image/svg+xml" />
+  <title>Phone Ban Plan Calculator — Material School</title>
+  <meta name="description" content="Lockers or pouches? Enter your own school numbers and this calculator works out how much phone-storage hardware your cell phone ban would take, using a queueing formula for wait times. From Material School, founded by Professor Samantha Keppler." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'system-ui', 'sans-serif'],
+            body: ['Nunito', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream: '#fffaf0',
+            sunshine: '#ffcf4d',
+            coral: '#ff6f5e',
+            sky: '#4ea8de',
+            leaf: '#7cc242',
+            grape: '#9b6dd1',
+            ink: '#3b3a45',
+            inksoft: '#6e6a78',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { -webkit-font-smoothing: antialiased; }
+    body { background-color: #fffaf0; }
+    .squiggle { text-decoration: underline wavy #ffcf4d; text-underline-offset: 6px; text-decoration-thickness: 3px; }
+    .tnum { font-variant-numeric: tabular-nums; }
+    /* number inputs: hide spinners so the big friendly fields stay clean */
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type=number] { -moz-appearance: textfield; }
+    .hide { display: none !important; }
+  </style>
+</head>
+
+<body class="font-body text-ink antialiased">
+
+  <!-- Top bar -->
+  <header class="sticky top-0 z-30 border-b border-sunshine/40 bg-cream/90 backdrop-blur">
+    <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+      <a href="../" class="text-sm font-semibold text-inksoft transition hover:text-coral">&larr; Material School</a>
+      <span class="flex items-center gap-2">
+        <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
+          <rect x="2" y="2" width="60" height="60" rx="16" fill="#ff6f5e"/>
+          <g transform="rotate(35 32 32)">
+            <rect x="27" y="13" width="10" height="6" rx="2" fill="#ffd1d6"/>
+            <rect x="27" y="19" width="10" height="3" fill="#eee7da"/>
+            <rect x="27" y="22" width="10" height="19" fill="#fffaf0"/>
+            <path d="M27 41 H37 L32 52 Z" fill="#f4d9a0"/>
+            <path d="M30.2 47.6 H33.8 L32 52 Z" fill="#3b3a45"/>
+          </g>
+        </svg>
+        <span class="font-display text-base font-bold text-ink">Material&nbsp;School</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute -right-16 -top-10 h-56 w-56 rounded-full bg-sky/20"></div>
+    <div class="pointer-events-none absolute right-24 top-32 h-20 w-20 rounded-full bg-leaf/30"></div>
+    <div class="pointer-events-none absolute -left-10 top-24 h-28 w-28 rounded-full bg-coral/15"></div>
+
+    <div class="relative mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-20">
+      <span class="inline-block rounded-full bg-sunshine/30 px-4 py-1.5 font-display text-sm font-semibold text-ink">🧮 A free tool for schools</span>
+      <h1 class="mt-6 font-display text-4xl font-bold leading-[1.08] text-ink sm:text-5xl md:text-6xl">
+        Phone Ban Plan Calculator
+      </h1>
+      <p class="mt-6 max-w-2xl font-display text-xl font-medium leading-snug text-ink sm:text-2xl">
+        Lockers or pouches? Here's what each one <span class="squiggle">takes</span>. 🔒
+      </p>
+      <p class="mt-5 max-w-2xl text-base leading-relaxed text-inksoft sm:text-lg">
+        Phone bans are easy to announce and hard to run. Put in your numbers and this works out
+        how much equipment you'd need to get everybody through by the final bell.
+      </p>
+
+      <div class="mt-7 max-w-2xl rounded-2xl border-2 border-ink/10 bg-white/70 p-5">
+        <p class="leading-relaxed text-inksoft">
+          This isn't a survey of what other schools bought. It's a queueing formula: you supply
+          the numbers, it does the math.
+          <a href="why/" class="font-semibold text-coral underline-offset-2 hover:underline">See the formulas →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 1 -->
+  <section class="mx-auto max-w-3xl px-5 pb-6 sm:px-6">
+    <div class="rounded-3xl border-2 border-sunshine/40 bg-sunshine/10 p-5 sm:p-8">
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">1. Which one? 🤷</h2>
+
+      <div class="mt-5 grid gap-4 sm:grid-cols-2" role="radiogroup" aria-label="Which method are you pricing?">
+        <label class="cursor-pointer">
+          <input type="radio" name="method" value="lockers" checked class="peer sr-only" />
+          <span class="block h-full rounded-2xl border-2 border-ink/10 bg-white p-5 transition peer-checked:border-sky peer-checked:bg-sky/15 peer-focus-visible:ring-2 peer-focus-visible:ring-coral/40">
+            <span class="block text-4xl">🗄️</span>
+            <span class="mt-3 block font-display text-xl font-semibold text-ink">Lockers</span>
+            <span class="mt-1 block text-sm leading-relaxed text-inksoft">The school holds the phone in an assigned compartment all day.</span>
+          </span>
+        </label>
+        <label class="cursor-pointer">
+          <input type="radio" name="method" value="pouches" class="peer sr-only" />
+          <span class="block h-full rounded-2xl border-2 border-ink/10 bg-white p-5 transition peer-checked:border-leaf peer-checked:bg-leaf/15 peer-focus-visible:ring-2 peer-focus-visible:ring-coral/40">
+            <span class="block text-4xl">🧲</span>
+            <span class="mt-3 block font-display text-xl font-semibold text-ink">Pouches</span>
+            <span class="mt-1 block text-sm leading-relaxed text-inksoft">The phone stays with the kiddo, locked in a pouch until a dock opens it.</span>
+          </span>
+        </label>
+      </div>
+
+      <p class="mt-5 text-sm leading-relaxed text-inksoft">
+        Splitting by grade? Run it twice — once for each group.
+      </p>
+    </div>
+  </section>
+
+  <!-- Step 2 -->
+  <section class="mx-auto max-w-3xl px-5 py-6 sm:px-6">
+    <div class="rounded-3xl border-2 border-ink/10 bg-white/70 p-5 sm:p-8">
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">2. Your numbers ✏️</h2>
+      <p class="mt-2 leading-relaxed text-inksoft">Estimates are fine. Everything updates as you type.</p>
+
+      <div class="mt-7 grid gap-6 sm:grid-cols-3">
+        <div>
+          <label for="students" class="font-display text-base font-semibold text-ink">Students in this group</label>
+          <input id="students" type="number" min="1" step="1" value="600" inputmode="numeric"
+                 class="tnum mt-2 w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 font-display text-xl font-semibold text-ink outline-none transition focus:border-coral focus:ring-2 focus:ring-coral/30" />
+          <p class="mt-1.5 text-sm leading-relaxed text-inksoft">Everyone on this method.</p>
+        </div>
+
+        <div>
+          <label for="service" class="font-display text-base font-semibold text-ink" id="serviceLabel">Seconds to retrieve a phone</label>
+          <input id="service" type="number" min="1" step="1" value="60" inputmode="numeric"
+                 class="tnum mt-2 w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 font-display text-xl font-semibold text-ink outline-none transition focus:border-coral focus:ring-2 focus:ring-coral/30" />
+          <p class="mt-1.5 text-sm leading-relaxed text-inksoft" id="serviceHelp"></p>
+        </div>
+
+        <div>
+          <label for="deadline" class="font-display text-base font-semibold text-ink">Everyone done within (minutes)</label>
+          <input id="deadline" type="number" min="1" step="1" value="10" inputmode="numeric"
+                 class="tnum mt-2 w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 font-display text-xl font-semibold text-ink outline-none transition focus:border-coral focus:ring-2 focus:ring-coral/30" />
+          <p class="mt-1.5 text-sm leading-relaxed text-inksoft">Dismissal is the tight one — a kiddo can't put it off till later.</p>
+        </div>
+      </div>
+
+      <div id="lockerOnly" class="mt-6 rounded-2xl border-2 border-sky/25 bg-sky/5 p-5">
+        <h3 class="font-display text-lg font-semibold text-sky">🗄️ Lockers only</h3>
+        <div class="mt-4 grid gap-6 sm:grid-cols-2">
+          <div>
+            <label for="perUnit" class="font-display text-base font-semibold text-ink">Compartments per locker unit</label>
+            <input id="perUnit" type="number" min="1" step="1" value="30" inputmode="numeric"
+                   class="tnum mt-2 w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-2.5 font-display text-xl font-semibold text-ink outline-none transition focus:border-coral focus:ring-2 focus:ring-coral/30" />
+            <p class="mt-1.5 text-sm leading-relaxed text-inksoft">From the supplier's spec sheet. Often around 30.</p>
+          </div>
+          <div>
+            <label for="reach" class="font-display text-base font-semibold text-ink">Students who can reach one unit at once</label>
+            <input id="reach" type="number" min="1" step="1" value="1" inputmode="numeric"
+                   class="tnum mt-2 w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-2.5 font-display text-xl font-semibold text-ink outline-none transition focus:border-coral focus:ring-2 focus:ring-coral/30" />
+            <p class="mt-1.5 text-sm leading-relaxed text-inksoft">Most units are narrow enough for one kiddo at a time. Raise it if yours are wide.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="pouchOnly" class="mt-6 rounded-2xl border-2 border-leaf/25 bg-leaf/5 p-5 hide">
+        <h3 class="font-display text-lg font-semibold text-leaf">🧲 Pouches only</h3>
+        <div class="mt-4">
+          <span class="font-display text-base font-semibold text-ink">Can any student unlock at any dock?</span>
+          <div class="mt-2 flex gap-3" role="radiogroup" aria-label="Can any student unlock at any dock?">
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="anyDock" value="yes" checked class="peer sr-only" />
+              <span class="block rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 text-center font-display text-lg font-semibold text-inksoft transition peer-checked:border-leaf peer-checked:bg-leaf/20 peer-checked:text-ink peer-focus-visible:ring-2 peer-focus-visible:ring-coral/40">Yes</span>
+            </label>
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="anyDock" value="no" class="peer sr-only" />
+              <span class="block rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 text-center font-display text-lg font-semibold text-inksoft transition peer-checked:border-coral peer-checked:bg-coral/20 peer-checked:text-ink peer-focus-visible:ring-2 peer-focus-visible:ring-coral/40">No</span>
+            </label>
+          </div>
+          <p class="mt-2 text-sm leading-relaxed text-inksoft" id="dockNote"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 3 -->
+  <section class="mx-auto max-w-3xl px-5 py-6 sm:px-6">
+    <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">3. What you'd need 🧮</h2>
+
+    <div id="answerCard" class="mt-5 rounded-3xl border-2 p-6 sm:p-8">
+      <div class="flex items-center gap-3">
+        <span class="text-4xl" id="answerIcon">🗄️</span>
+        <h3 class="font-display text-xl font-semibold text-ink sm:text-2xl" id="answerTitle">Lockers</h3>
+      </div>
+      <p class="tnum mt-5 font-display text-6xl font-bold leading-none sm:text-7xl" id="answerN">—</p>
+      <p class="mt-2 font-display text-xl font-medium text-ink" id="answerUnit">locker units</p>
+
+      <dl class="mt-6 space-y-2 border-t-2 border-ink/10 pt-5 text-sm text-inksoft sm:text-base">
+        <div class="flex justify-between gap-4"><dt>Served at once</dt><dd class="tnum font-semibold text-ink" id="rowServe">—</dd></div>
+        <div class="flex justify-between gap-4" id="rowCompWrap"><dt>Compartments</dt><dd class="tnum font-semibold text-ink" id="rowComp">—</dd></div>
+        <div class="flex justify-between gap-4"><dt>Everyone done in</dt><dd class="font-semibold text-ink" id="rowClear">—</dd></div>
+        <div class="flex justify-between gap-4"><dt>Average kiddo waits</dt><dd class="font-semibold text-ink" id="rowWait">—</dd></div>
+      </dl>
+
+      <p class="mt-5 leading-relaxed text-inksoft" id="answerDetail"></p>
+      <p class="mt-4 rounded-2xl border-2 border-sunshine/50 bg-sunshine/15 p-4 leading-relaxed text-inksoft hide" id="overbuyNote"></p>
+    </div>
+
+    <div class="mt-5 rounded-3xl border-2 border-coral/30 bg-coral/5 p-5 sm:p-7">
+      <div class="flex items-start gap-4">
+        <span class="text-4xl">↔️</span>
+        <div>
+          <h3 class="font-display text-lg font-semibold text-ink sm:text-xl">Compared side by side</h3>
+          <p class="mt-2 leading-relaxed text-inksoft" id="compareLine"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 4 -->
+  <section class="bg-sunshine/15">
+    <div class="mx-auto max-w-3xl px-5 py-14 sm:px-6 sm:py-16">
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">Know what fits? 📏</h2>
+      <p class="mt-3 leading-relaxed text-inksoft">Pace out your hallway, then see how long it would take.</p>
+
+      <div class="mt-7 max-w-sm">
+        <label for="have" class="font-display text-base font-semibold text-ink" id="haveLabel">Locker units you can fit</label>
+        <input id="have" type="number" min="1" step="1" value="30" inputmode="numeric"
+               class="tnum mt-2 w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 font-display text-xl font-semibold text-ink outline-none transition focus:border-coral focus:ring-2 focus:ring-coral/30" />
+      </div>
+
+      <div class="mt-7 rounded-3xl border-2 border-ink/10 bg-white/70 p-5 sm:p-7">
+        <h3 class="font-display text-lg font-semibold text-ink">Everyone would be done in</h3>
+        <p class="tnum mt-3 font-display text-5xl font-bold leading-none sm:text-6xl" id="haveClear">—</p>
+        <p class="mt-3 leading-relaxed text-inksoft" id="haveDetail"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why -->
+  <section class="mx-auto max-w-3xl px-5 pb-14 sm:px-6">
+    <a href="why/" class="block rounded-3xl border-2 border-grape/30 bg-grape/5 p-6 transition hover:border-coral/50 hover:bg-coral/5 sm:p-8">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
+        <div class="text-4xl">🤔</div>
+        <div class="flex-1">
+          <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">Why lockers need more than pouches</h2>
+          <p class="mt-2 leading-relaxed text-inksoft">
+            A locker belongs to one kiddo. A dock is shared. That means lockers need more places to
+            serve kiddos at once for the same wait. The math is there, and so is everything this
+            calculator assumes.
+          </p>
+          <span class="mt-4 inline-block font-display text-sm font-semibold text-coral">Read the reasoning →</span>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- Say hello -->
+  <section class="mx-auto max-w-3xl px-5 pb-20 sm:px-6">
+    <div class="rounded-3xl border-2 border-coral/30 bg-coral/5 p-8 text-center sm:p-10">
+      <div class="text-4xl">💌</div>
+      <h2 class="mt-3 font-display text-3xl font-semibold text-ink">About this calculator</h2>
+      <p class="mx-auto mt-3 max-w-xl leading-relaxed text-inksoft">
+        This calculator was built by <a href="../../" class="font-semibold text-coral underline-offset-2 hover:underline">Samantha Keppler</a> —
+        former high school teacher, PhD engineer, and expert in education operations. Get in touch
+        with feedback or your cell phone ban implementation stories. She'd love to hear from you!
+      </p>
+      <a href="mailto:materialschoolusa@gmail.com?subject=Phone%20Ban%20Plan%20Calculator" class="mt-6 inline-block rounded-full bg-coral px-6 py-3 font-display text-base font-semibold text-white transition hover:bg-ink">Get in touch →</a>
+      <p class="mt-4 text-sm text-inksoft/80">
+        Or leave a voicemail at <a href="tel:+13133067476" class="font-semibold text-coral underline-offset-2 hover:underline">(313)&nbsp;306-7476</a>.
+      </p>
+    </div>
+  </section>
+
+  <footer class="mx-auto max-w-3xl px-5 py-10 text-sm text-inksoft/70 sm:px-6">
+    <a href="../" class="hover:text-coral">&larr; Back to Material School</a>
+  </footer>
+
+<script>
+  "use strict";
+
+  var $ = function (id) { return document.getElementById(id); };
+  var picked = function (n) { return document.querySelector('input[name="' + n + '"]:checked').value; };
+
+  // Everyone is present at the bell. Retrieval times are exponential with the given mean:
+  // POOLED: all c servers stay busy until only c students remain, then it is a race
+  //   between the last c.   E[clear] = (m-c)s/c + s*H_c        (exact)
+  // DEDICATED: each position works through its own n = m/c students, a sum of n
+  //   exponentials with mean n*s and sd s*sqrt(n). The school waits on the slowest of c.
+  //   E[clear] ~ n*s + s*sqrt(n)*sqrt(2 ln c)                  (approximation, runs ~5% high)
+  function harmonic(c) {
+    var h = 0; for (var k = 1; k <= c; k++) { h += 1 / k; } return h;
+  }
+  function pooledClear(m, s, c) {
+    if (c >= m) { return s * harmonic(m); }
+    return (m - c) * s / c + s * harmonic(c);
+  }
+  function dedicatedClear(m, s, c) {
+    var n = m / c;
+    return n * s + s * Math.sqrt(n) * Math.sqrt(2 * Math.log(Math.max(c, 2)));
+  }
+  function needFor(m, s, T, fn) {
+    for (var c = 1; c <= m; c++) { if (fn(m, s, c) <= T) { return c; } }
+    return m;
+  }
+  // Mean wait: pooled drains at c/s, so student k starts about k*s/c.
+  // Dedicated: each position serves its own n in turn.
+  function pooledWait(m, s, c)    { return (m - 1) * s / (2 * c); }
+  function dedicatedWait(m, s, c) { return (m / c - 1) * s / 2; }
+
+  function num(id, fb) { var v = parseFloat($(id).value); return (isFinite(v) && v > 0) ? v : fb; }
+  function fmt(n) { return Math.round(n).toLocaleString(); }
+  function b(x) { return "<strong class='text-ink tnum'>" + fmt(x) + "</strong>"; }
+  function mins(sec) {
+    if (!isFinite(sec)) { return "—"; }
+    if (sec < 90) { return Math.round(sec) + " sec"; }
+    var m = Math.floor(sec / 60), r = Math.round(sec - m * 60);
+    return m + " min " + (r ? r + " sec" : "");
+  }
+  function show(el, on) { el.classList.toggle("hide", !on); }
+
+  var lastAnswer = 0;
+
+  function update() {
+    var lockers = (picked("method") === "lockers");
+    var m       = num("students", 600);
+    var s       = num("service", lockers ? 60 : 20);
+    var T       = num("deadline", 10) * 60;
+    var perUnit = num("perUnit", 30);
+    var reach   = num("reach", 1);
+    var isPooled = picked("anyDock") === "yes";
+
+    show($("lockerOnly"), lockers);
+    show($("pouchOnly"), !lockers);
+    show($("rowCompWrap"), lockers);
+
+    $("serviceLabel").textContent = lockers
+      ? "Seconds to retrieve a phone" : "Seconds to unlock a pouch";
+    $("serviceHelp").textContent = lockers
+      ? "Walking to the unit, working the lock, taking the phone out. A minute is a fair guess."
+      : "Tapping the pouch on a dock and walking off. Twenty seconds is a fair guess.";
+    $("dockNote").innerHTML = isPooled
+      ? "That's a <strong class='text-ink'>pooled queue</strong> — one line, every dock. It's why "
+        + "pouches need fewer places to serve kiddos at once."
+      : "Then each dock is its own line, like a locker, and the advantage goes away. The number "
+        + "below reflects that.";
+
+    var card = $("answerCard");
+    card.className = "mt-5 rounded-3xl border-2 p-6 sm:p-8 "
+      + (lockers ? "border-sky/40 bg-sky/5" : "border-leaf/40 bg-leaf/5");
+    $("answerN").className = "tnum mt-5 font-display text-6xl font-bold leading-none sm:text-7xl "
+      + (lockers ? "text-sky" : "text-leaf");
+    $("answerIcon").textContent = lockers ? "\u{1F5C4}\u{FE0F}" : "\u{1F9F2}";
+    $("answerTitle").textContent = lockers ? "Lockers" : "Pouches";
+    $("answerUnit").textContent = lockers ? "locker units" : "unlocking docks";
+    $("haveLabel").textContent = lockers ? "Locker units you can fit" : "Docks you can fit";
+
+    var clearFn = lockers ? dedicatedClear : (isPooled ? pooledClear : dedicatedClear);
+    var waitFn  = lockers ? dedicatedWait  : (isPooled ? pooledWait  : dedicatedWait);
+    var spots   = needFor(m, s, T, clearFn);
+
+    var answer, serveAtOnce;
+    if (lockers) {
+      var unitsAccess = Math.ceil(spots / reach);
+      var unitsStore  = Math.ceil(m / perUnit);
+      answer = Math.max(unitsAccess, unitsStore);
+      serveAtOnce = answer * reach;
+      $("rowComp").textContent = fmt(answer * perUnit);
+      var storeOnly = clearFn(m, s, unitsStore * reach);
+      $("answerDetail").innerHTML = (unitsAccess >= unitsStore)
+        ? "The units are for <strong class='text-ink'>access</strong>, not storage. Buying just "
+          + "enough to hold the phones — " + b(unitsStore) + " units — gives you only "
+          + b(unitsStore * reach) + " places to serve kiddos at once, and the line would take "
+          + "<strong class='text-ink'>" + mins(storeOnly) + "</strong> to clear."
+        : "Storing the phones drives this order. " + b(unitsAccess) + " units would clear the "
+          + "line in time; you need " + b(unitsStore) + " to give everyone a compartment.";
+
+      var spare = answer * perUnit - m;
+      if (unitsAccess > unitsStore && spare > 0) {
+        $("overbuyNote").innerHTML =
+          "💡 <strong class='text-ink'>Buy narrower units instead.</strong> "
+          + b(answer) + " units at " + b(perUnit) + " compartments each would leave you "
+          + b(spare) + " empty compartments. Order the same " + b(answer) + " units at about "
+          + "<strong class='text-ink tnum'>" + fmt(Math.ceil(m / answer))
+          + " compartments each</strong> and you get the same " + b(answer)
+          + " places to serve kiddos at once, enough compartments for everyone, and nothing wasted.";
+        show($("overbuyNote"), true);
+      } else { show($("overbuyNote"), false); }
+    } else {
+      answer = spots; serveAtOnce = spots;
+      show($("overbuyNote"), false);
+      $("answerDetail").innerHTML = isPooled
+        ? "Nothing gets stored, so docks are all you buy."
+        : "That's the cost of assigned docks. One shared line would bring it down.";
+    }
+
+    $("answerN").textContent = fmt(answer);
+    lastAnswer = answer;
+    $("rowServe").textContent = fmt(serveAtOnce);
+    $("rowClear").textContent = mins(clearFn(m, s, serveAtOnce));
+    $("rowWait").textContent  = mins(waitFn(m, s, serveAtOnce));
+
+    // the other method, same students and seconds
+    var mineSpots = spots, theirsSpots, theirs, note;
+    if (lockers) {
+      theirsSpots = needFor(m, s, T, pooledClear);
+      theirs = "pouches";
+      note = "And no compartments to buy.";
+    } else {
+      theirsSpots = needFor(m, s, T, dedicatedClear);
+      theirs = "lockers";
+      note = "Plus " + fmt(m) + " compartments.";
+    }
+    $("compareLine").innerHTML =
+      "Same " + b(m) + " kiddos, same " + b(s) + " seconds each. "
+      + (lockers ? "Lockers" : "Pouches") + " need " + b(mineSpots)
+      + " places to serve kiddos at once; " + theirs + " needs " + b(theirsSpots) + ". " + note
+      + " <a href='why/' class='font-semibold text-coral underline-offset-2 hover:underline'>Why →</a>";
+
+    // work backwards
+    var have = num("have", 30);
+    var haveSpots = lockers ? have * reach : have;
+    var hc = clearFn(m, s, haveSpots);
+    $("haveClear").textContent = mins(hc);
+    $("haveClear").className = "tnum mt-3 font-display text-5xl font-bold leading-none sm:text-6xl "
+      + (hc > T ? "text-coral" : (lockers ? "text-sky" : "text-leaf"));
+    var word = lockers ? " units" : " docks";
+    $("haveDetail").innerHTML =
+      b(have) + word + " serve " + b(haveSpots) + " at once. "
+      + (hc <= T ? "Inside your " + b(T / 60) + "-minute target. ✅"
+                 : "Over your " + b(T / 60) + "-minute target — " + b(answer) + word + " would do it.");
+  }
+
+  ["students", "service", "deadline", "perUnit", "reach", "have"]
+    .forEach(function (id) { $(id).addEventListener("input", update); });
+  Array.prototype.forEach.call(
+    document.querySelectorAll('input[name="anyDock"]'),
+    function (r) { r.addEventListener("change", update); });
+  // A locker retrieval and a pouch tap are not the same job, so each method carries its
+  // own starting estimate. Switching methods resets both this and the what-fits box.
+  Array.prototype.forEach.call(
+    document.querySelectorAll('input[name="method"]'),
+    function (r) { r.addEventListener("change", function () {
+      $("service").value = (r.value === "lockers") ? 60 : 20;
+      update(); $("have").value = lastAnswer; update();
+    }); });
+
+  update(); $("have").value = lastAnswer; update();
+</script>
+
+</body>
+</html>

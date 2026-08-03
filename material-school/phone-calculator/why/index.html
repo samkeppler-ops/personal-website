@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../logo.svg" type="image/svg+xml" />
+  <title>Why lockers need more than pouches — Material School</title>
+  <meta name="description" content="The queueing theory behind the school phone storage calculator: why assigned lockers need more places to serve kids at once than shared pouch docks, with the formulas in plain language." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'system-ui', 'sans-serif'],
+            body: ['Nunito', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream: '#fffaf0', sunshine: '#ffcf4d', coral: '#ff6f5e',
+            sky: '#4ea8de', leaf: '#7cc242', grape: '#9b6dd1',
+            ink: '#3b3a45', inksoft: '#6e6a78',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { -webkit-font-smoothing: antialiased; }
+    body { background-color: #fffaf0; }
+    .squiggle { text-decoration: underline wavy #ffcf4d; text-underline-offset: 6px; text-decoration-thickness: 3px; }
+
+    /* --- little math typesetting, no external library --- */
+    .math {
+      font-family: "Iowan Old Style", Charter, Georgia, serif;
+      font-style: italic;
+      font-size: 1.15em;
+      white-space: nowrap;
+    }
+    .math .op, .math .num { font-style: normal; }
+    .eq {
+      display: flex; justify-content: center; align-items: center;
+      gap: 0.55rem; flex-wrap: wrap;
+      padding: 1.1rem 1rem; border-radius: 1rem;
+      background: #ffffffb3; border: 2px solid #3b3a4514;
+      overflow-x: auto;
+    }
+    .frac {
+      display: inline-flex; flex-direction: column; align-items: center;
+      vertical-align: middle; margin: 0 0.15rem;
+    }
+    .frac > .over { border-bottom: 1.5px solid currentColor; padding: 0 0.4rem 0.1rem; }
+    .frac > .under { padding: 0.1rem 0.4rem 0; }
+    .where dt { font-family: "Iowan Old Style", Charter, Georgia, serif; font-style: italic; font-size: 1.05rem; }
+  </style>
+</head>
+
+<body class="font-body text-ink antialiased">
+
+  <!-- Top bar -->
+  <header class="sticky top-0 z-30 border-b border-sunshine/40 bg-cream/90 backdrop-blur">
+    <div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-4 sm:px-6">
+      <a href="../" class="text-sm font-semibold text-inksoft transition hover:text-coral">&larr; Calculator</a>
+      <span class="flex items-center gap-2">
+        <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
+          <rect x="2" y="2" width="60" height="60" rx="16" fill="#ff6f5e"/>
+          <g transform="rotate(35 32 32)">
+            <rect x="27" y="13" width="10" height="6" rx="2" fill="#ffd1d6"/>
+            <rect x="27" y="19" width="10" height="3" fill="#eee7da"/>
+            <rect x="27" y="22" width="10" height="19" fill="#fffaf0"/>
+            <path d="M27 41 H37 L32 52 Z" fill="#f4d9a0"/>
+            <path d="M30.2 47.6 H33.8 L32 52 Z" fill="#3b3a45"/>
+          </g>
+        </svg>
+        <span class="font-display text-base font-bold text-ink">Material&nbsp;School</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute -right-16 -top-10 h-56 w-56 rounded-full bg-grape/15"></div>
+    <div class="pointer-events-none absolute -left-10 top-24 h-28 w-28 rounded-full bg-sky/15"></div>
+    <div class="relative mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-20">
+      <span class="inline-block rounded-full bg-grape/20 px-4 py-1.5 font-display text-sm font-semibold text-ink">🤔 The reasoning</span>
+      <h1 class="mt-6 font-display text-4xl font-bold leading-[1.08] text-ink sm:text-5xl">
+        Why lockers need more than pouches
+      </h1>
+      <p class="mt-6 font-display text-xl font-medium leading-snug text-ink sm:text-2xl">
+        One queue is <span class="squiggle">shared</span>. The other isn't. 🗄️🧲
+      </p>
+      <p class="mt-5 text-base leading-relaxed text-inksoft sm:text-lg">
+        Lockers need more places to serve kiddos at once than pouches do. It isn't that a lock is
+        slower than a magnet — give both the same seconds per kiddo and the gap is still there.
+        Here's where it comes from.
+      </p>
+    </div>
+  </section>
+
+  <!-- 1. picture -->
+  <section class="mx-auto max-w-3xl px-5 py-10 sm:px-6 sm:py-14">
+    <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">Start with the picture 👀</h2>
+    <p class="mt-3 leading-relaxed text-inksoft">Same kids, two ways of organizing them.</p>
+
+    <div class="mt-8 grid gap-5 sm:grid-cols-2">
+      <div class="rounded-3xl border-2 border-sky/30 bg-sky/5 p-5 sm:p-7">
+        <h3 class="font-display text-xl font-semibold text-sky">Lockers: lots of little lines</h3>
+        <div class="mt-5 flex flex-col gap-2" id="lockerLanes"></div>
+        <p class="mt-5 text-sm leading-relaxed text-inksoft">
+          One compartment each, so one place to be served. The unit three feet away sits idle and
+          it does them no good — look at the empty second line next to the crowded third.
+        </p>
+      </div>
+      <div class="rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-5 sm:p-7">
+        <h3 class="font-display text-xl font-semibold text-leaf">Pouches: one line, many docks</h3>
+        <div class="mt-5 flex items-center gap-3 overflow-x-auto" id="pouchLane"></div>
+        <p class="mt-5 text-sm leading-relaxed text-inksoft">
+          Any kid unlocks at any dock, so whoever is next takes whichever frees up first. No dock
+          sits idle while somebody waits.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-6 rounded-3xl border-2 border-sunshine/40 bg-sunshine/10 p-5 sm:p-7">
+      <p class="leading-relaxed text-inksoft">
+        Operations researchers call the first <strong class="text-ink">dedicated capacity</strong>
+        and the second <strong class="text-ink">pooled capacity</strong>. Pooling wins — at bank
+        tellers, at airport security, and in the hallway outside your gym at 3:05.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. setup -->
+  <section class="bg-white/50">
+    <div class="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">What we're picturing 🔔</h2>
+      <p class="mt-3 leading-relaxed text-inksoft">
+        The bell rings and every kiddo is already standing at the lockers or the docks. Nobody is
+        still walking from class. So nothing ever sits idle for want of a customer — the only
+        question is how fast the line moves.
+      </p>
+
+      <dl class="where mt-7 space-y-4">
+        <div class="rounded-2xl border-2 border-ink/10 bg-white p-4 sm:p-5">
+          <dt class="text-ink">m</dt>
+          <dd class="mt-1 leading-relaxed text-inksoft">How many kiddos have to be served.</dd>
+        </div>
+        <div class="rounded-2xl border-2 border-ink/10 bg-white p-4 sm:p-5">
+          <dt class="text-ink">s</dt>
+          <dd class="mt-1 leading-relaxed text-inksoft">
+            Average seconds to retrieve one phone. <strong class="text-ink">Some kiddos are quick
+            and some are slow</strong> — a jammed lock, a chat, a phone that slid to the back. That difference between kiddos is the whole story below, so we don't pretend every kid takes exactly the same time.
+          </dd>
+        </div>
+        <div class="rounded-2xl border-2 border-ink/10 bg-white p-4 sm:p-5">
+          <dt class="text-ink">c</dt>
+          <dd class="mt-1 leading-relaxed text-inksoft">How many kiddos can be served at the same moment — locker units, or docks.</dd>
+        </div>
+      </dl>
+
+      <div class="mt-7 rounded-2xl border-2 border-grape/25 bg-grape/5 p-5">
+        <h3 class="font-display text-lg font-semibold text-ink">How we treat the retrieval times ⏱️</h3>
+        <p class="mt-2 leading-relaxed text-inksoft">
+          We model them as an <strong class="text-ink">exponential distribution</strong> with your
+          number as the average. That's the standard choice for how long a task takes when most
+          are quick and a few run much longer, and it's what lets the rest of this page come out
+          as clean formulas rather than a computer simulation.
+        </p>
+        <p class="mt-3 leading-relaxed text-inksoft">
+          What it means in practice, if you enter 30 seconds: most kiddos are done well inside
+          that, but about a third take longer than 30 seconds, roughly one in seven takes over a
+          minute, and one in twenty takes more than a minute and a half. That long tail is not a
+          rounding error — it is the reason lockers and pouches come out differently at all.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. pouches -->
+  <section class="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+    <div class="flex items-center gap-3">
+      <span class="text-4xl">🧲</span>
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">Pouches: two phases</h2>
+    </div>
+
+    <p class="mt-4 leading-relaxed text-inksoft">
+      <strong class="text-ink">While there's still a line</strong>, every dock is busy. Docks
+      finish at different moments, and each time one frees up the next kiddo steps in. With
+      <span class="math">c</span> docks going, somebody finishes every
+      <span class="math">s</span>/<span class="math">c</span> seconds on average. Getting through
+      everyone except the last <span class="math">c</span> takes:
+    </p>
+    <div class="eq mt-5">
+      <span class="frac math"><span class="over">(m &minus; c)&nbsp;s</span><span class="under">c</span></span>
+    </div>
+
+    <p class="mt-6 leading-relaxed text-inksoft">
+      <strong class="text-ink">Then the last few.</strong> Now the final
+      <span class="math">c</span> kiddos are each at a dock with nobody behind them, and you're
+      waiting on whichever of them is slowest. That works out to:
+    </p>
+    <div class="eq mt-5">
+      <span class="math">s</span>
+      <span class="math op">&times;</span>
+      <span class="math op">(</span>
+      <span class="math num">1</span><span class="math op">&nbsp;+&nbsp;</span>
+      <span class="frac math"><span class="over">1</span><span class="under">2</span></span>
+      <span class="math op">+</span>
+      <span class="frac math"><span class="over">1</span><span class="under">3</span></span>
+      <span class="math op">+&nbsp;&hellip;&nbsp;+</span>
+      <span class="frac math"><span class="over">1</span><span class="under">c</span></span>
+      <span class="math op">)</span>
+    </div>
+    <p class="mt-5 leading-relaxed text-inksoft">
+      Here is where that chain of fractions comes from. The last
+      <span class="math">c</span> kiddos are all being served at the same moment, so you are not
+      waiting for one whole retrieval — you are waiting for the first of
+      <span class="math">c</span> of them to end, which happens after about
+      <span class="math">s</span>/<span class="math">c</span> seconds. Once that kiddo leaves,
+      <span class="math">c</span>&nbsp;&minus;&nbsp;1 are still going, so the next one to finish
+      takes <span class="math">s</span>/(<span class="math">c</span>&nbsp;&minus;&nbsp;1). Fewer and fewer docks are in use at once, so each finish takes longer than the last, until one kiddo is left alone at a dock and takes a full <span class="math">s</span>.
+    </p>
+
+    <div class="eq mt-7 border-leaf/40 bg-leaf/10">
+      <span class="math op">everyone done in&nbsp;&nbsp;</span>
+      <span class="frac math"><span class="over">(m &minus; c)&nbsp;s</span><span class="under">c</span></span>
+      <span class="math op">+</span>
+      <span class="math">s</span>
+      <span class="math op">(</span><span class="math num">1</span><span class="math op">+</span>
+      <span class="frac math"><span class="over">1</span><span class="under">2</span></span>
+      <span class="math op">+&hellip;+</span>
+      <span class="frac math"><span class="over">1</span><span class="under">c</span></span>
+      <span class="math op">)</span>
+    </div>
+    <p class="mt-4 text-sm leading-relaxed text-inksoft">
+      600 kiddos, 30 seconds each, 30 docks: 9.5 minutes with every dock in use, then 2 minutes waiting on the last few. About <strong class="text-ink">11.5 minutes</strong>.
+    </p>
+  </section>
+
+  <!-- 4. lockers -->
+  <section class="bg-white/50">
+    <div class="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+      <div class="flex items-center gap-3">
+        <span class="text-4xl">🗄️</span>
+        <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">Lockers: every unit on its own</h2>
+      </div>
+
+      <p class="mt-4 leading-relaxed text-inksoft">
+        A locker unit takes one kiddo at a time, which is what most of them are wide enough for. So
+        <span class="math">c</span> units means <span class="math">c</span> kiddos served at
+        once, and we can compare units to docks straight across. Split the school across those
+        units and each one has <span class="math">n</span> =
+        <span class="math">m</span>/<span class="math">c</span> kids to work through, one after
+        another, which takes it <span class="math">n</span>&nbsp;&times;&nbsp;<span class="math">s</span>
+        on average.
+      </p>
+
+      <p class="mt-4 leading-relaxed text-inksoft">
+        But the units don't all finish together, because some kiddos are quick and some are slow.
+        One unit gets several jammed locks in a row and falls behind; another gets an easy group and finishes early. How far apart the units finish works out to about
+        <span class="math">s</span>&nbsp;&times;&nbsp;&radic;<span class="math">n</span>.
+      </p>
+
+      <p class="mt-4 leading-relaxed text-inksoft">
+        And here's the part that costs you: <strong class="text-ink">everyone isn't done until the
+        slowest unit is done.</strong> The unit that finished early can't help, because those
+        kids' phones are locked in a different cabinet. With <span class="math">c</span> units,
+        the slowest one usually finishes about &radic;(2&nbsp;ln&nbsp;<span class="math">c</span>) times that far behind the average one.
+      </p>
+
+      <div class="eq mt-7 border-sky/40 bg-sky/10">
+        <span class="math op">everyone done in&nbsp;&nbsp;</span>
+        <span class="math">n&nbsp;s</span>
+        <span class="math op">+</span>
+        <span class="math">s</span>
+        <span class="math op">&radic;</span><span class="math">n</span>
+        <span class="math op">&times;</span>
+        <span class="math op">&radic;</span><span class="math op">(</span><span class="math num">2</span>
+        <span class="math op">ln</span> <span class="math">c</span><span class="math op">)</span>
+      </div>
+      <p class="mt-4 text-sm leading-relaxed text-inksoft">
+        600 kiddos, 30 seconds each, 30 units: 10 minutes if every unit finished at the same moment, plus about 6 minutes waiting on the slowest one. About <strong class="text-ink">15.8 minutes</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. side by side -->
+  <section class="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+    <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">Side by side ⚖️</h2>
+    <p class="mt-3 leading-relaxed text-inksoft">
+      Same 600 kiddos, same 30 seconds each — 30 locker units against 30 docks:
+    </p>
+
+    <div class="mt-6 overflow-x-auto rounded-2xl border-2 border-ink/10 bg-white">
+      <table class="w-full text-left text-sm">
+        <thead class="text-inksoft">
+          <tr class="border-b-2 border-ink/10">
+            <th scope="col" class="px-4 py-3 font-semibold sm:px-5"></th>
+            <th scope="col" class="px-4 py-3 text-right font-semibold sm:px-5">Steady part</th>
+            <th scope="col" class="px-4 py-3 text-right font-semibold sm:px-5">Waiting on the slow ones</th>
+            <th scope="col" class="px-4 py-3 text-right font-semibold sm:px-5">Total</th>
+          </tr>
+        </thead>
+        <tbody class="text-ink">
+          <tr class="border-b border-ink/5">
+            <td class="px-4 py-3 font-semibold sm:px-5">🧲 Pouches</td>
+            <td class="px-4 py-3 text-right tabular-nums sm:px-5">9.5 min</td>
+            <td class="px-4 py-3 text-right tabular-nums sm:px-5">2.0 min</td>
+            <td class="px-4 py-3 text-right font-semibold tabular-nums sm:px-5">11.5 min</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-semibold sm:px-5">🗄️ Lockers</td>
+            <td class="px-4 py-3 text-right tabular-nums sm:px-5">10.0 min</td>
+            <td class="px-4 py-3 text-right tabular-nums sm:px-5">5.8 min</td>
+            <td class="px-4 py-3 text-right font-semibold tabular-nums sm:px-5">15.8 min</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-6 leading-relaxed text-inksoft">
+      Look at the middle column, because that's the entire difference. Both methods move through
+      the bulk of the school at about the same rate. What separates them is what happens around
+      the slow kiddos.
+    </p>
+    <p class="mt-4 leading-relaxed text-inksoft">
+      With pouches, a slow kiddo holds up one dock and nobody else — the next kid in line simply
+      goes to a different dock. With lockers, a slow kiddo holds up every kid assigned to that
+      same unit, and they can't go anywhere else, because their phone is in that cabinet and no
+      other. So all of them wait.
+    </p>
+    <p class="mt-4 leading-relaxed text-inksoft">
+      That's what you're buying when you buy a pooled line. Not speed —
+      <strong class="text-ink">protection from the slow ones.</strong>
+    </p>
+  </section>
+
+  <!-- 6. limits -->
+  <section class="mx-auto max-w-3xl px-5 pb-12 sm:px-6 sm:pb-16">
+    <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">What we assume, precisely 📋</h2>
+    <p class="mt-3 leading-relaxed text-inksoft">
+      Every number in the calculator rests on these. Each one is stated plainly first, then in the
+      terms a colleague would want.
+    </p>
+
+    <div class="mt-7 space-y-4">
+
+      <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+        <h3 class="font-display text-lg font-semibold text-ink">Everybody is already there at the bell</h3>
+        <p class="mt-1.5 leading-relaxed text-inksoft">
+          Nobody is still walking from class, so no dock or unit ever stands empty for want of a
+          kiddo. If your students take three minutes to reach the lockers, add three minutes to
+          every time on the calculator — and it costs both methods about the same.
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">
+          Formally: all <span class="math">m</span> arrivals occur at
+          <span class="math">t</span>&nbsp;=&nbsp;0, so utilization is 1 until the queue empties.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+        <h3 class="font-display text-lg font-semibold text-ink">Some kiddos are quick and some are slow</h3>
+        <p class="mt-1.5 leading-relaxed text-inksoft">
+          Retrieval times vary, and your number is the average, not a guarantee.
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">
+          Formally: retrieval times are independent draws from an exponential distribution with
+          mean <span class="math">s</span>. Independence is doing real work here — if your slow
+          kiddos cluster (a whole class arriving together after gym), both methods do worse than
+          shown, lockers more so.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+        <h3 class="font-display text-lg font-semibold text-ink">Each locker unit serves the same number of kiddos</h3>
+        <p class="mt-1.5 leading-relaxed text-inksoft">
+          Compartments are handed out so that no unit is responsible for many more students than
+          any other. If one unit is, lockers do worse than shown.
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">
+          Formally: each of the <span class="math">c</span> units serves exactly
+          <span class="math">n</span> =
+          <span class="math">m</span>/<span class="math">c</span> students. Arbitrary assignment
+          instead makes the busiest unit hold about
+          <span class="math">m</span>/<span class="math">c</span>&nbsp;+&nbsp;&radic;(2(<span class="math">m</span>/<span class="math">c</span>)&nbsp;ln&nbsp;<span class="math">c</span>),
+          and the school waits on that one.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+        <h3 class="font-display text-lg font-semibold text-ink">A locker unit takes one kiddo at a time</h3>
+        <p class="mt-1.5 leading-relaxed text-inksoft">
+          Which is what most units are wide enough for. If two kiddos really can open compartments
+          side by side, you need fewer units than the calculator says — set that on the calculator
+          and it will account for it.
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">
+          Formally: units and serving positions are the same count, so
+          <span class="math">c</span> units gives <span class="math">c</span> servers.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+        <h3 class="font-display text-lg font-semibold text-ink">The pouch line is genuinely pooled</h3>
+        <p class="mt-1.5 leading-relaxed text-inksoft">
+          One line feeds all the docks, and whoever is next takes whichever comes free. Tie kiddos
+          to a particular dock and the whole advantage disappears — pouches then behave exactly
+          like lockers.
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">
+          Formally: a single queue with <span class="math">c</span> servers, not
+          <span class="math">c</span> queues with one server each.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+        <h3 class="font-display text-lg font-semibold text-ink">The locker figure is an approximation</h3>
+        <p class="mt-1.5 leading-relaxed text-inksoft">
+          The pouch formula is exact. The locker one is close but slightly pessimistic, so if
+          anything it flatters pouches.
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">
+          Formally: E[max] &asymp; &mu;&nbsp;+&nbsp;&sigma;&radic;(2&nbsp;ln&nbsp;<span class="math">c</span>)
+          is a leading-order asymptotic for the largest of <span class="math">c</span> draws. At
+          <span class="math">c</span>&nbsp;=&nbsp;30 it comes out about 5 percent high against
+          simulation.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+        <h3 class="font-display text-lg font-semibold text-ink">These are formulas, not observations</h3>
+        <p class="mt-1.5 leading-relaxed text-inksoft">
+          Nobody has published how long it actually takes a kiddo to fetch a phone from a locker,
+          so the calculator starts from a guess and lets you replace it. If you time yours, please
+          send it — that single number would improve everything here.
+        </p>
+      </div>
+
+    </div>
+
+    <p class="mt-6 leading-relaxed text-inksoft">
+      None of this covers dollars, or how well either method actually keeps phones out of hands
+      during the day. Those are real questions and this is not the tool for them.
+    </p>
+  </section>
+
+  <!-- Say hello -->
+  <section class="mx-auto max-w-3xl px-5 pb-20 sm:px-6">
+    <div class="rounded-3xl border-2 border-coral/30 bg-coral/5 p-8 text-center sm:p-10">
+      <div class="text-4xl">💌</div>
+      <h2 class="mt-3 font-display text-3xl font-semibold text-ink">About this calculator</h2>
+      <p class="mx-auto mt-3 max-w-xl leading-relaxed text-inksoft">
+        This calculator was built by <a href="../../../" class="font-semibold text-coral underline-offset-2 hover:underline">Samantha Keppler</a> —
+        former high school teacher, PhD engineer, and expert in education operations. Get in touch
+        with feedback or your cell phone ban implementation stories. She'd love to hear from you!
+      </p>
+      <a href="mailto:materialschoolusa@gmail.com?subject=Why%20lockers%20need%20more%20than%20pouches" class="mt-6 inline-block rounded-full bg-coral px-6 py-3 font-display text-base font-semibold text-white transition hover:bg-ink">Get in touch →</a>
+    </div>
+  </section>
+
+  <footer class="mx-auto max-w-3xl px-5 py-10 text-sm text-inksoft/70 sm:px-6">
+    <a href="../" class="hover:text-coral">&larr; Back to the calculator</a>
+  </footer>
+
+<script>
+  "use strict";
+  function dot() {
+    var d = document.createElement("span");
+    d.className = "inline-block h-2.5 w-2.5 rounded-full bg-ink/25 flex-none";
+    return d;
+  }
+  function server(colorClass) {
+    var el = document.createElement("span");
+    el.className = "inline-block h-5 w-8 rounded-md flex-none " + colorClass;
+    return el;
+  }
+  var lanes = document.getElementById("lockerLanes");
+  [4, 0, 5, 2].forEach(function (n) {
+    var lane = document.createElement("div");
+    lane.className = "flex items-center gap-1.5";
+    for (var i = 0; i < n; i++) { lane.appendChild(dot()); }
+    var gap = document.createElement("span");
+    gap.className = "w-1 flex-none";
+    lane.appendChild(gap);
+    lane.appendChild(server("bg-sky"));
+    lanes.appendChild(lane);
+  });
+  var pooled = document.getElementById("pouchLane");
+  var queue = document.createElement("div");
+  queue.className = "flex items-center gap-1.5";
+  for (var q = 0; q < 11; q++) { queue.appendChild(dot()); }
+  pooled.appendChild(queue);
+  var bank = document.createElement("div");
+  bank.className = "flex flex-col gap-1.5";
+  for (var k = 0; k < 4; k++) { bank.appendChild(server("bg-leaf")); }
+  pooled.appendChild(bank);
+</script>
+
+</body>
+</html>
