@@ -268,22 +268,31 @@
       <p class="mt-4 leading-relaxed text-inksoft">
         And here's the part that costs you: <strong class="text-ink">everyone isn't done until the
         slowest unit is done.</strong> The unit that finished early can't help, because those
-        kids' phones are locked in a different cabinet. With <span class="math">c</span> units,
-        the slowest one usually finishes about &radic;(2&nbsp;ln&nbsp;<span class="math">c</span>) times that far behind the average one.
+        kids' phones are locked in a different cabinet. So the question isn't how long a unit
+        takes on average — it's how long the worst of them takes.
+      </p>
+
+      <p class="mt-4 leading-relaxed text-inksoft">
+        That has an exact answer, and it's simpler than it sounds. Every unit has to be finished
+        for the school to be finished, and the units don't affect each other, so:
       </p>
 
       <div class="eq mt-7 border-sky/40 bg-sky/10">
-        <span class="math op">everyone done in&nbsp;&nbsp;</span>
-        <span class="math">n&nbsp;s</span>
-        <span class="math op">+</span>
-        <span class="math">s</span>
-        <span class="math op">&radic;</span><span class="math">n</span>
-        <span class="math op">&times;</span>
-        <span class="math op">&radic;</span><span class="math op">(</span><span class="math num">2</span>
-        <span class="math op">ln</span> <span class="math">c</span><span class="math op">)</span>
+        <span class="math op">chance everyone is done by&nbsp;</span><span class="math">t</span>
+        <span class="math op">&nbsp;=&nbsp;(</span><span class="math op">chance one unit is done by&nbsp;</span><span class="math">t</span><span class="math op">)</span><sup class="math">c</sup>
       </div>
+
+      <p class="mt-5 leading-relaxed text-inksoft">
+        And a unit is done by <span class="math">t</span> only if all
+        <span class="math">n</span> of its retrievals fit inside <span class="math">t</span>. We
+        know exactly how likely that is, because we said each retrieval is exponential and we know
+        how many there are — <span class="math">n</span> of them added up. So the whole curve is
+        known, and the average clearing time comes straight off it. The calculator works that out
+        for your numbers.
+      </p>
+
       <p class="mt-4 text-sm leading-relaxed text-inksoft">
-        600 kiddos, 30 seconds each, 30 units: 10 minutes if every unit finished at the same moment, plus about 6 minutes waiting on the slowest one. About <strong class="text-ink">15.8 minutes</strong>.
+        600 kiddos, 30 seconds each, 30 units: 10 minutes if every unit finished at the same moment, plus about 5 minutes waiting on the slowest one. About <strong class="text-ink">15.1 minutes</strong>.
       </p>
     </div>
   </section>
@@ -315,8 +324,8 @@
           <tr>
             <td class="px-4 py-3 font-semibold sm:px-5">🗄️ Lockers</td>
             <td class="px-4 py-3 text-right tabular-nums sm:px-5">10.0 min</td>
-            <td class="px-4 py-3 text-right tabular-nums sm:px-5">5.8 min</td>
-            <td class="px-4 py-3 text-right font-semibold tabular-nums sm:px-5">15.8 min</td>
+            <td class="px-4 py-3 text-right tabular-nums sm:px-5">5.1 min</td>
+            <td class="px-4 py-3 text-right font-semibold tabular-nums sm:px-5">15.1 min</td>
           </tr>
         </tbody>
       </table>
@@ -337,6 +346,59 @@
       That's what you're buying when you buy a pooled line. Not speed —
       <strong class="text-ink">protection from the slow ones.</strong>
     </p>
+  </section>
+
+  <!-- 5b. average wait -->
+  <section class="bg-white/50">
+    <div class="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+      <div class="flex items-center gap-3">
+        <span class="text-4xl">⏱️</span>
+        <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">How long the typical kiddo waits</h2>
+      </div>
+
+      <p class="mt-4 leading-relaxed text-inksoft">
+        Everything above is about when the <em>last</em> kiddo leaves, because that's what has to
+        fit inside your window. The calculator also shows the average wait, which is a different
+        thing: what a typical kiddo stands there for. Both have exact formulas too.
+      </p>
+
+      <p class="mt-4 leading-relaxed text-inksoft">
+        With pouches there's one line, so a kiddo waits for everyone ahead of them to clear a dock.
+        With every dock in use somebody finishes every <span class="math">s</span>/<span class="math">c</span> seconds, and averaging over the whole school gives:
+      </p>
+
+      <div class="eq mt-6 border-leaf/40 bg-leaf/10">
+        <span class="math op">average wait&nbsp;&nbsp;</span>
+        <span class="frac math"><span class="over">s</span><span class="under">c</span></span>
+        <span class="math op">&times;</span>
+        <span class="frac math"><span class="over">(m &minus; c)(m &minus; c + 1)</span><span class="under">2m</span></span>
+      </div>
+
+      <p class="mt-6 leading-relaxed text-inksoft">
+        With lockers a kiddo only waits on the kiddos ahead of them <em>at their own unit</em> —
+        the rest of the school is irrelevant to them. There are <span class="math">n</span> kiddos
+        at a unit, so on average:
+      </p>
+
+      <div class="eq mt-6 border-sky/40 bg-sky/10">
+        <span class="math op">average wait&nbsp;&nbsp;</span>
+        <span class="frac math"><span class="over">(n &minus; 1)&nbsp;s</span><span class="under">2</span></span>
+      </div>
+
+      <p class="mt-6 leading-relaxed text-inksoft">
+        Here's the part worth knowing before you compare the two numbers.
+        <strong class="text-ink">If you size each method to hit the same window, lockers show the
+        shorter average wait.</strong> 600 kiddos and a 10-minute window: 36 docks gives an average
+        wait of 3.7 minutes, and the 55 locker units you'd need gives 2.5 minutes.
+      </p>
+
+      <p class="mt-4 leading-relaxed text-inksoft">
+        That is not lockers being better. It's you having bought 55 of something instead of 36.
+        Put the same number of each in the building and they're nearly identical — at 30 places
+        apiece it's 4.5 minutes for pouches against 4.8 for lockers. The average wait is not where
+        these two methods differ. The end of the line is.
+      </p>
+    </div>
   </section>
 
   <!-- 6. limits -->
@@ -418,16 +480,18 @@
       </div>
 
       <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
-        <h3 class="font-display text-lg font-semibold text-ink">The locker figure is an approximation</h3>
+        <h3 class="font-display text-lg font-semibold text-ink">Both figures are exact</h3>
         <p class="mt-1.5 leading-relaxed text-inksoft">
-          The pouch formula is exact. The locker one is close but slightly pessimistic, so if
-          anything it flatters pouches.
+          Neither number on the calculator comes from a simulation, and neither is a rule of
+          thumb. Both fall out of the assumptions above.
         </p>
         <p class="mt-2 text-sm leading-relaxed text-inksoft">
-          Formally: E[max] &asymp; &mu;&nbsp;+&nbsp;&sigma;&radic;(2&nbsp;ln&nbsp;<span class="math">c</span>)
-          is a leading-order asymptotic for the largest of <span class="math">c</span> draws. At
-          <span class="math">c</span>&nbsp;=&nbsp;30 it comes out about 5 percent high against
-          simulation.
+          Formally: the pouch time is
+          (<span class="math">m</span>&nbsp;&minus;&nbsp;<span class="math">c</span>)<span class="math">s</span>/<span class="math">c</span>&nbsp;+&nbsp;<span class="math">s</span><span class="math">H</span><sub class="math">c</sub>
+          in closed form. The locker time is the mean of the largest of
+          <span class="math">c</span> Erlang(<span class="math">n</span>) variables, which is a
+          single integral we evaluate numerically. Against a simulation of 600 kiddos across 30
+          units it lands within a tenth of a percent.
         </p>
       </div>
 

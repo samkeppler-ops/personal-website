@@ -294,31 +294,103 @@
   var $ = function (id) { return document.getElementById(id); };
   var picked = function (n) { return document.querySelector('input[name="' + n + '"]:checked').value; };
 
-  // Everyone is present at the bell. Retrieval times are exponential with the given mean:
+  // Everyone is present at the bell. Retrieval times are exponential with the given mean.
   // POOLED: all c servers stay busy until only c students remain, then it is a race
-  //   between the last c.   E[clear] = (m-c)s/c + s*H_c        (exact)
-  // DEDICATED: each position works through its own n = m/c students, a sum of n
-  //   exponentials with mean n*s and sd s*sqrt(n). The school waits on the slowest of c.
-  //   E[clear] ~ n*s + s*sqrt(n)*sqrt(2 ln c)                  (approximation, runs ~5% high)
+  //   between the last c.   E[clear] = (m-c)s/c + s*H_c                      (exact)
+  //   Mean wait  = (s/c) * (m-c)(m-c+1) / 2m                                 (exact)
+  // DEDICATED: each place works through its own n students, one after another, so a
+  //   place's workload is exactly Erlang(n) with mean n*s. The school waits on the
+  //   slowest place, so with F the Erlang distribution function
+  //     P(clear <= t) = prod_j F(t; n_j)                                     (exact)
+  //     E[clear]      = integral_0^inf ( 1 - prod_j F(t; n_j) ) dt           (exact)
+  //   evaluated by Simpson's rule. Mean wait = s * sum_j n_j(n_j-1) / 2m     (exact)
   function harmonic(c) {
     var h = 0; for (var k = 1; k <= c; k++) { h += 1 / k; } return h;
   }
+
+  // --- regularized lower incomplete gamma P(a,x), which is the Erlang CDF at x = t/s ---
+  var LG = [76.18009172947146, -86.50532032941677, 24.01409824083091,
+            -1.231739572450155, 0.1208650973866179e-2, -0.5395239384953e-5];
+  function gammln(x) {
+    var y = x, t = x + 5.5, ser = 1.000000000190015;
+    t -= (x + 0.5) * Math.log(t);
+    for (var j = 0; j < 6; j++) { y += 1; ser += LG[j] / y; }
+    return -t + Math.log(2.5066282746310005 * ser / x);
+  }
+  function gser(a, x) {
+    var ap = a, sum = 1 / a, del = sum;
+    for (var i = 0; i < 500; i++) {
+      ap += 1; del *= x / ap; sum += del;
+      if (Math.abs(del) < Math.abs(sum) * 1e-14) { break; }
+    }
+    return sum * Math.exp(-x + a * Math.log(x) - gammln(a));
+  }
+  function gcf(a, x) {
+    var TINY = 1e-300, b = x + 1 - a, c = 1 / TINY, d = 1 / b, h = d, an, del;
+    for (var i = 1; i < 500; i++) {
+      an = -i * (i - a); b += 2;
+      d = an * d + b; if (Math.abs(d) < TINY) { d = TINY; }
+      c = b + an / c;  if (Math.abs(c) < TINY) { c = TINY; }
+      d = 1 / d; del = d * c; h *= del;
+      if (Math.abs(del - 1) < 1e-14) { break; }
+    }
+    return Math.exp(-x + a * Math.log(x) - gammln(a)) * h;
+  }
+  function erlangCDF(n, x) {
+    if (x <= 0) { return 0; }
+    return (x < n + 1) ? gser(n, x) : 1 - gcf(n, x);
+  }
+
   function pooledClear(m, s, c) {
     if (c >= m) { return s * harmonic(m); }
     return (m - c) * s / c + s * harmonic(c);
   }
   function dedicatedClear(m, s, c) {
-    var n = m / c;
-    return n * s + s * Math.sqrt(n) * Math.sqrt(2 * Math.log(Math.max(c, 2)));
+    m = Math.round(m); c = Math.round(c);
+    if (m < 1 || c < 1) { return 0; }
+    var base = Math.floor(m / c), extra = m - base * c;
+    var groups = [];
+    if (extra > 0) { groups.push([base + 1, extra]); }
+    if (c - extra > 0 && base > 0) { groups.push([base, c - extra]); }
+    if (!groups.length) { return 0; }
+    var nmax = 0, g;
+    for (g = 0; g < groups.length; g++) { nmax = Math.max(nmax, groups[g][0]); }
+    var hi = nmax * s + 25 * s * Math.sqrt(nmax) + 40 * s;
+    var N = 800, h = hi / N, tot = 0, i, t, lp, F, zero, w;
+    for (i = 0; i <= N; i++) {
+      t = i * h; lp = 0; zero = false;
+      for (g = 0; g < groups.length; g++) {
+        F = erlangCDF(groups[g][0], t / s);
+        if (!(F > 0)) { zero = true; break; }
+        lp += groups[g][1] * Math.log(F);
+      }
+      w = (i === 0 || i === N) ? 1 : (i % 2 ? 4 : 2);
+      tot += w * (zero ? 1 : 1 - Math.exp(lp));
+    }
+    return tot * h / 3;
   }
+  // Fewest places whose expected clearing time fits the window. Both clearing times
+  // fall as places are added, so bisection is safe and keeps the page responsive.
   function needFor(m, s, T, fn) {
-    for (var c = 1; c <= m; c++) { if (fn(m, s, c) <= T) { return c; } }
-    return m;
+    var lo = 1, hi = Math.round(m), mid;
+    while (lo < hi) {
+      mid = Math.floor((lo + hi) / 2);
+      if (fn(m, s, mid) <= T) { hi = mid; } else { lo = mid + 1; }
+    }
+    return lo;
   }
-  // Mean wait: pooled drains at c/s, so student k starts about k*s/c.
-  // Dedicated: each position serves its own n in turn.
-  function pooledWait(m, s, c)    { return (m - 1) * s / (2 * c); }
-  function dedicatedWait(m, s, c) { return (m / c - 1) * s / 2; }
+  function pooledWait(m, s, c) {
+    if (c >= m) { return 0; }
+    return (s / c) * (m - c) * (m - c + 1) / (2 * m);
+  }
+  function dedicatedWait(m, s, c) {
+    m = Math.round(m); c = Math.round(c);
+    if (m < 1 || c < 1) { return 0; }
+    var base = Math.floor(m / c), extra = m - base * c, tot = 0;
+    if (extra > 0) { tot += extra * (base + 1) * base / 2; }
+    if (c - extra > 0) { tot += (c - extra) * base * (base - 1) / 2; }
+    return s * tot / m;
+  }
 
   function num(id, fb) { var v = parseFloat($(id).value); return (isFinite(v) && v > 0) ? v : fb; }
   function fmt(n) { return Math.round(n).toLocaleString(); }
