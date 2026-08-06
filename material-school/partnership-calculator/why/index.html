@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../logo.svg" type="image/svg+xml" />
+  <title>Why: Little's Law and school partnerships — Material School</title>
+  <meta name="description" content="The math behind the School Partnership Calculator: Little's Law applied to nonprofit partnerships, why cycle length is not partnership length, and why equal cycles widen the gap between schools." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'system-ui', 'sans-serif'],
+            body: ['Nunito', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream: '#fffaf0', sunshine: '#ffcf4d', coral: '#ff6f5e',
+            sky: '#4ea8de', leaf: '#7cc242', grape: '#9b6dd1',
+            ink: '#3b3a45', inksoft: '#6e6a78',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { -webkit-font-smoothing: antialiased; }
+    body { background-color: #fffaf0; }
+    .squiggle { text-decoration: underline wavy #ffcf4d; text-underline-offset: 6px; text-decoration-thickness: 3px; }
+    .math { font-family: 'Nunito', system-ui, sans-serif; font-style: italic; }
+    .eq {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+      gap: 0.35rem; border-radius: 1rem; border: 2px solid rgba(59,58,69,0.10);
+      background: #fff; padding: 1.25rem 1rem; font-size: 1.35rem; color: #3b3a45;
+    }
+    .eq .op { color: #6e6a78; font-style: normal; }
+  </style>
+</head>
+
+<body class="font-body text-ink antialiased">
+
+  <header class="sticky top-0 z-30 border-b border-sunshine/40 bg-cream/90 backdrop-blur">
+    <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+      <a href="../" class="text-sm font-semibold text-inksoft transition hover:text-coral">&larr; Back to the calculator</a>
+      <span class="font-display text-base font-bold text-ink">Material&nbsp;School</span>
+    </div>
+  </header>
+
+  <!-- 1. Hero -->
+  <section class="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+    <span class="inline-block rounded-full bg-grape/20 px-4 py-1.5 font-display text-sm font-semibold text-ink">🤔 The reasoning</span>
+    <h1 class="mt-6 font-display text-4xl font-bold leading-[1.1] text-ink sm:text-5xl">
+      One line of math
+    </h1>
+    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-inksoft">
+      The whole calculator is a single equation that has been around since 1961. It's called
+      Little's Law, and it has been used to count cars on an assembly line, patients in a waiting
+      room, and money owed to a business. It turns out to work just as well for counting the
+      partnerships a school is operating.
+    </p>
+  </section>
+
+  <!-- 2. The law -->
+  <section class="bg-white/50">
+    <div class="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">The law itself ✳️</h2>
+      <p class="mt-3 leading-relaxed text-inksoft">
+        However many things are sitting in a system at once equals how fast they arrive, times how
+        long each one stays.
+      </p>
+
+      <div class="eq mt-6 border-grape/40 bg-grape/10">
+        <span class="math">L</span>
+        <span class="op">=</span>
+        <span class="math">&lambda;</span>
+        <span class="op">&times;</span>
+        <span class="math">W</span>
+      </div>
+
+      <div class="mt-7 space-y-4">
+        <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+          <p class="font-display text-lg font-semibold text-ink"><span class="math">L</span> — partnerships you're operating</p>
+          <p class="mt-1.5 leading-relaxed text-inksoft">
+            How many are operating at any one moment, averaged over the long haul. Not how many
+            you've ever had; how many are live right now.
+          </p>
+        </div>
+        <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+          <p class="font-display text-lg font-semibold text-ink"><span class="math">&lambda;</span> — how many you start each year</p>
+          <p class="mt-1.5 leading-relaxed text-inksoft">
+            New partnerships formed per year. Pronounced "lambda," which is just the letter the
+            math people picked.
+          </p>
+        </div>
+        <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+          <p class="font-display text-lg font-semibold text-ink"><span class="math">W</span> — how long a cycle runs</p>
+          <p class="mt-1.5 leading-relaxed text-inksoft">
+            Years before you have to do the setup work again. This is the one people get wrong,
+            so it gets its own section below.
+          </p>
+        </div>
+      </div>
+
+      <p class="mt-7 leading-relaxed text-inksoft">
+        Start four partnerships a year, each running two years before it needs renewing or replacing, and
+        you're operating about eight at a time. That's the whole calculator.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. Cycle vs length -->
+  <section class="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+    <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">Cycle length is not partnership length ⏳</h2>
+    <p class="mt-3 leading-relaxed text-inksoft">
+      This is the distinction the whole thing rests on, and it is easy to miss because schools
+      don't usually track it.
+    </p>
+    <p class="mt-4 leading-relaxed text-inksoft">
+      A cycle ends when the school has to make a real investment again: writing the application,
+      recruiting the volunteers, negotiating the schedule, finding the money. If a partner has
+      been coming to your building for six years but you renew or replace it every August, that is six
+      one-year cycles, not one six-year partnership. You did the work six times.
+    </p>
+    <p class="mt-4 leading-relaxed text-inksoft">
+      A three-year grant you win once and then run is one three-year cycle. Same paperwork,
+      spread over three times as long.
+    </p>
+
+    <div class="mt-7 rounded-2xl border-2 border-sunshine/40 bg-sunshine/10 p-5">
+      <p class="leading-relaxed text-inksoft">
+        Two schools can each say they've had a partner for six years. One of them did the setup
+        work six times and the other did it twice. In the math, those are very different schools —
+        and they end up operating very different numbers of partnerships.
+      </p>
+    </div>
+
+    <p class="mt-6 leading-relaxed text-inksoft">
+      In practice cycle length is mostly not the school's decision. It follows the partner's own
+      funding: a nonprofit on one-year grants can only offer you one-year cycles. That's worth
+      knowing, because it means a school trying to operate more partnerships has one lever it fully
+      controls and one it has to ask for.
+    </p>
+  </section>
+
+  <!-- 4. Ramp-up -->
+  <section class="bg-white/50">
+    <div class="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">Getting there takes a while 📈</h2>
+      <p class="mt-3 leading-relaxed text-inksoft">
+        Starting from nothing, it takes about <span class="math">W</span> years to build up to
+        <span class="math">L</span> partnerships — the same number as the cycle length. Nothing
+        expires until a cycle is up, so you accumulate steadily and then level off.
+      </p>
+      <p class="mt-4 leading-relaxed text-inksoft">
+        That creates a trade-off worth seeing clearly. Two schools can land in the same place by
+        very different routes:
+      </p>
+
+      <div class="mt-6 overflow-x-auto rounded-2xl border-2 border-ink/10 bg-white">
+        <table class="w-full text-left text-sm">
+          <thead class="text-inksoft">
+            <tr class="border-b-2 border-ink/10">
+              <th scope="col" class="px-4 py-3 font-semibold sm:px-5"></th>
+              <th scope="col" class="px-4 py-3 text-right font-semibold sm:px-5">Started per year</th>
+              <th scope="col" class="px-4 py-3 text-right font-semibold sm:px-5">Cycle</th>
+              <th scope="col" class="px-4 py-3 text-right font-semibold sm:px-5">Operating</th>
+              <th scope="col" class="px-4 py-3 text-right font-semibold sm:px-5">Time to get there</th>
+            </tr>
+          </thead>
+          <tbody class="text-ink">
+            <tr class="border-b border-ink/5">
+              <td class="px-4 py-3 font-semibold sm:px-5">School A</td>
+              <td class="px-4 py-3 text-right tabular-nums sm:px-5">4</td>
+              <td class="px-4 py-3 text-right tabular-nums sm:px-5">3 yrs</td>
+              <td class="px-4 py-3 text-right font-semibold tabular-nums sm:px-5">12</td>
+              <td class="px-4 py-3 text-right tabular-nums sm:px-5">3 yrs</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold sm:px-5">School B</td>
+              <td class="px-4 py-3 text-right tabular-nums sm:px-5">2</td>
+              <td class="px-4 py-3 text-right tabular-nums sm:px-5">6 yrs</td>
+              <td class="px-4 py-3 text-right font-semibold tabular-nums sm:px-5">12</td>
+              <td class="px-4 py-3 text-right tabular-nums sm:px-5">6 yrs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-6 leading-relaxed text-inksoft">
+        Both end up operating twelve. School B takes twice as long to get there. So longer cycles
+        are good for where you end up and slow for how fast you arrive, which matters a lot if the
+        need is urgent right now.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. Order matters -->
+  <section class="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+    <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">The order you build in matters 🧱</h2>
+    <p class="mt-3 leading-relaxed text-inksoft">
+      Most schools have a mix: some one-year partnerships, some three- or five-year ones. Which
+      you go after first changes where you end up.
+    </p>
+    <p class="mt-4 leading-relaxed text-inksoft">
+      Start with the long-cycle ones and they sit there quietly while you go build the short-cycle
+      ones on top. Start with the short-cycle ones and you spend next year renewing or replacing them instead
+      of adding anything new. Same effort, fewer partnerships.
+    </p>
+    <p class="mt-4 leading-relaxed text-inksoft">
+      Schools under the most pressure tend to do the opposite, because a one-year partnership
+      solves this year's problem and a three-year grant doesn't. That's a real bind, not a
+      mistake, but it does cost them partnerships in the long run.
+    </p>
+  </section>
+
+  <!-- 6. Equity -->
+  <section class="bg-white/50">
+    <div class="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">Why equal cycles widen the gap ⚖️</h2>
+      <p class="mt-3 leading-relaxed text-inksoft">
+        Here's the part that surprises people. Cycle length is roughly the same everywhere,
+        because it's set by nonprofit funding rather than by the school. That sounds fair. It
+        isn't.
+      </p>
+      <p class="mt-4 leading-relaxed text-inksoft">
+        Because <span class="math">L</span> is a multiplication, the cycle length multiplies
+        whatever gap already exists in how many partnerships each school can start. A school
+        starting six a year and a school starting two a year are four apart. Give them both
+        two-year cycles and they're eight apart. Give them both three-year cycles and they're
+        twelve apart.
+      </p>
+      <p class="mt-4 leading-relaxed text-inksoft">
+        The same cycle length for everyone doesn't level anything. It scales up the difference
+        that was already there. And it's nearly impossible to notice from inside any one
+        partnership — you only see it by looking at a whole district at once.
+      </p>
+      <p class="mt-5 leading-relaxed text-inksoft">
+        The flip side is that the multiplication also works in your favor. Give the school that
+        starts two a year a six-year cycle, and it operates twelve — the same as the school starting
+        four a year on three-year cycles.
+        <a href="../district/" class="font-semibold text-coral underline-offset-2 hover:underline">The district tool works this out for your schools →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 7. Assumptions -->
+  <section class="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+    <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">What this assumes 📋</h2>
+    <p class="mt-3 leading-relaxed text-inksoft">
+      Every number rests on these. Each one is stated plainly first, then in the terms a colleague
+      would want.
+    </p>
+
+    <div class="mt-7 space-y-4">
+      <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+        <h3 class="font-display text-lg font-semibold text-ink">Your partnering pace holds steady</h3>
+        <p class="mt-1.5 leading-relaxed text-inksoft">
+          You keep starting about the same number of partnerships a year, and cycles stay about
+          the same length. If your school is getting better at this over time, you'll do better
+          than the number here.
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">
+          Formally: <span class="math">&lambda;</span> and <span class="math">W</span> are
+          stationary. Little's Law is a long-run average and doesn't describe any single year.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+        <h3 class="font-display text-lg font-semibold text-ink">A partnership costs nothing to run once it's built</h3>
+        <p class="mt-1.5 leading-relaxed text-inksoft">
+          Between setups, the partnership runs without eating into your capacity to start new
+          ones. If keeping one going is itself a lot of work, count it as a shorter cycle.
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">
+          Formally: maintenance cost within a cycle is zero. Anything with a heavy annual cost
+          is already a one-year cycle by definition.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+        <h3 class="font-display text-lg font-semibold text-ink">Long partnerships aren't harder to land than short ones</h3>
+        <p class="mt-1.5 leading-relaxed text-inksoft">
+          Chasing a three-year grant takes about the same effort as a one-year agreement. Some
+          long ones are easy and some short ones are hard.
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">
+          Formally: <span class="math">W</span> is independent of formation effort. If longer
+          cycles were systematically harder to win, going after them would cost you some
+          <span class="math">&lambda;</span>, and the trade wouldn't always be worth it.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+        <h3 class="font-display text-lg font-semibold text-ink">This counts partnerships, not what they're worth</h3>
+        <p class="mt-1.5 leading-relaxed text-inksoft">
+          Twelve small partnerships and twelve large ones look identical here. A school with
+          fewer but better partners may be better off than the count suggests.
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">
+          Formally: <span class="math">L</span> is a count. It carries no information about the
+          size, fit, or quality of what each partner provides.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-8 leading-relaxed text-inksoft">
+      Little's Law itself holds under very general conditions — it doesn't need arrivals to be
+      random or predictable in any particular way. The assumptions above are about the school, not
+      about the math.
+    </p>
+  </section>
+
+  <!-- Back -->
+  <section class="mx-auto max-w-3xl px-5 pb-20 sm:px-6">
+    <a href="../" class="block rounded-3xl border-2 border-sunshine/50 bg-sunshine/15 p-6 text-center transition hover:border-coral/50 hover:bg-coral/5 sm:p-8">
+      <div class="text-4xl">🤝</div>
+      <h2 class="mt-3 font-display text-2xl font-semibold text-ink sm:text-3xl">Back to the calculator</h2>
+      <p class="mx-auto mt-2 max-w-lg leading-relaxed text-inksoft">Put your own numbers in.</p>
+    </a>
+  </section>
+
+  <footer class="mx-auto max-w-3xl px-5 py-10 text-sm text-inksoft/70 sm:px-6">
+    <a href="../../" class="hover:text-coral">&larr; Back to Material School</a>
+  </footer>
+
+</body>
+</html>

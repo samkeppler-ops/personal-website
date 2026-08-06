@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../logo.svg" type="image/svg+xml" />
+  <title>School Partnership Calculator — Material School</title>
+  <meta name="description" content="How many nonprofit partnerships can your school operate each year? Enter how many you start each year and how long each one lasts before you have to renew or replace it. Based on Little's Law. From Material School, founded by Professor Samantha Keppler." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'system-ui', 'sans-serif'],
+            body: ['Nunito', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream: '#fffaf0', sunshine: '#ffcf4d', coral: '#ff6f5e',
+            sky: '#4ea8de', leaf: '#7cc242', grape: '#9b6dd1',
+            ink: '#3b3a45', inksoft: '#6e6a78',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { -webkit-font-smoothing: antialiased; }
+    body { background-color: #fffaf0; }
+    .squiggle { text-decoration: underline wavy #ffcf4d; text-underline-offset: 6px; text-decoration-thickness: 3px; }
+    .tnum { font-variant-numeric: tabular-nums; }
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type=number] { -moz-appearance: textfield; }
+  </style>
+</head>
+
+<body class="font-body text-ink antialiased">
+
+  <!-- Top bar -->
+  <header class="sticky top-0 z-30 border-b border-sunshine/40 bg-cream/90 backdrop-blur">
+    <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+      <a href="../" class="text-sm font-semibold text-inksoft transition hover:text-coral">&larr; Material School</a>
+      <span class="flex items-center gap-2">
+        <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
+          <rect x="2" y="2" width="60" height="60" rx="16" fill="#ff6f5e"/>
+          <g transform="rotate(35 32 32)">
+            <rect x="27" y="13" width="10" height="6" rx="2" fill="#ffd1d6"/>
+            <rect x="27" y="19" width="10" height="3" fill="#eee7da"/>
+            <rect x="27" y="22" width="10" height="19" fill="#fffaf0"/>
+            <path d="M27 41 H37 L32 52 Z" fill="#f4d9a0"/>
+            <path d="M30.2 47.6 H33.8 L32 52 Z" fill="#3b3a45"/>
+          </g>
+        </svg>
+        <span class="font-display text-base font-bold text-ink">Material&nbsp;School</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute -right-16 -top-10 h-56 w-56 rounded-full bg-grape/20"></div>
+    <div class="pointer-events-none absolute right-24 top-32 h-20 w-20 rounded-full bg-sunshine/40"></div>
+    <div class="pointer-events-none absolute -left-10 top-24 h-28 w-28 rounded-full bg-leaf/20"></div>
+
+    <div class="relative mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-20">
+      <span class="inline-block rounded-full bg-sunshine/30 px-4 py-1.5 font-display text-sm font-semibold text-ink">🤝 A free tool for schools</span>
+      <h1 class="mt-6 font-display text-4xl font-bold leading-[1.08] text-ink sm:text-5xl md:text-6xl">
+        School Partnership Calculator
+      </h1>
+      <p class="mt-6 max-w-2xl font-display text-xl font-medium leading-snug text-ink sm:text-2xl">
+        How many partnerships can your school <span class="squiggle">operate each year</span>? 🌱
+      </p>
+      <p class="mt-5 max-w-2xl text-base leading-relaxed text-inksoft sm:text-lg">
+        Schools bring in nonprofit partners to fill gaps that the budget doesn't cover. The
+        average number you operate at one time comes down to two things: how many new ones you
+        start each year, and how long each one runs before you have to renew or replace it.
+      </p>
+    </div>
+  </section>
+
+  <!-- Cycle time explainer -->
+  <section class="mx-auto max-w-3xl px-5 pb-8 sm:px-6">
+    <div class="rounded-3xl border-2 border-grape/30 bg-grape/5 p-6 sm:p-8">
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">First: what's a cycle? ⏳</h2>
+      <p class="mt-3 leading-relaxed text-inksoft">
+        A partnership's <strong class="text-ink">cycle</strong> is how many years it runs before you have
+        to do the big setup work all over again.
+      </p>
+
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+          <div class="text-3xl">🔁</div>
+          <p class="mt-3 font-display text-lg font-semibold text-ink">A one-year cycle</p>
+          <p class="mt-1.5 leading-relaxed text-inksoft">
+            You've worked with the same after-school program for six years. But every August you
+            write the same application, recruit the same volunteers, and redo the schedule.
+            Six years long, one-year cycle.
+          </p>
+        </div>
+        <div class="rounded-2xl border-2 border-ink/10 bg-white p-5">
+          <div class="text-3xl">📄</div>
+          <p class="mt-3 font-display text-lg font-semibold text-ink">A three-year cycle</p>
+          <p class="mt-1.5 leading-relaxed text-inksoft">
+            You wrote one grant, won it, and the funding runs three years. During those years, you just need to keep it oiled and fine-tuned. That's a three-year cycle.
+          </p>
+        </div>
+      </div>
+
+      <p class="mt-6 leading-relaxed text-inksoft">
+        A partnership cycle is <strong class="text-ink">not</strong> the same as how long you've had the same
+        partner. You might have had a partner for five years, but if you have to renew it every year, it has a one year cycle time.
+      </p>
+      <p class="mt-3 leading-relaxed text-inksoft">
+      </p>
+    </div>
+  </section>
+
+  <!-- Calculator 1 -->
+  <section class="mx-auto max-w-3xl px-5 py-6 sm:px-6">
+    <div class="rounded-3xl border-2 border-sunshine/40 bg-sunshine/10 p-5 sm:p-8">
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">1. How many do we operate on average? 📊</h2>
+      <p class="mt-2 leading-relaxed text-inksoft">Everything updates as you type.</p>
+
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        <div>
+          <label for="a_lambda" class="font-display text-base font-semibold text-ink">New partnerships you start each year</label>
+          <p class="mt-1 text-sm leading-relaxed text-inksoft">Average over the last couple of years.</p>
+          <input id="a_lambda" type="number" min="0" step="0.5" value="4" inputmode="decimal"
+                 class="tnum mt-2 w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 font-display text-xl font-semibold text-ink outline-none transition focus:border-coral focus:ring-2 focus:ring-coral/30" />
+        </div>
+        <div>
+          <label for="a_w" class="font-display text-base font-semibold text-ink">Average cycle, in years</label>
+          <p class="mt-1 text-sm leading-relaxed text-inksoft">How long before you renew or replace it.</p>
+          <input id="a_w" type="number" min="0" step="0.5" value="2" inputmode="decimal"
+                 class="tnum mt-2 w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 font-display text-xl font-semibold text-ink outline-none transition focus:border-coral focus:ring-2 focus:ring-coral/30" />
+        </div>
+      </div>
+
+      <div class="mt-7 rounded-3xl border-2 border-grape/40 bg-white p-6 sm:p-8">
+        <p class="font-display text-lg font-semibold text-inksoft">Your average number of</p>
+        <p class="tnum mt-2 font-display text-6xl font-bold leading-none text-grape sm:text-7xl" id="a_out">—</p>
+        <p class="mt-2 font-display text-xl font-semibold text-ink">operating partnerships</p>
+        <p class="mt-4 leading-relaxed text-inksoft" id="a_note"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator 2 -->
+  <section class="mx-auto max-w-3xl px-5 py-6 sm:px-6">
+    <div class="rounded-3xl border-2 border-sky/40 bg-sky/10 p-5 sm:p-8">
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">2. How long do our cycles need to be? ⏱️</h2>
+      <p class="mt-2 leading-relaxed text-inksoft">
+        If you can't start more partnerships each year, longer cycles are the other way to get there.
+      </p>
+
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        <div>
+          <label for="b_lambda" class="font-display text-base font-semibold text-ink">New partnerships you start each year</label>
+          <input id="b_lambda" type="number" min="0" step="0.5" value="3" inputmode="decimal"
+                 class="tnum mt-2 w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 font-display text-xl font-semibold text-ink outline-none transition focus:border-coral focus:ring-2 focus:ring-coral/30" />
+        </div>
+        <div>
+          <label for="b_goal" class="font-display text-base font-semibold text-ink">Average operating partnerships you want</label>
+          <input id="b_goal" type="number" min="0" step="1" value="12" inputmode="decimal"
+                 class="tnum mt-2 w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 font-display text-xl font-semibold text-ink outline-none transition focus:border-coral focus:ring-2 focus:ring-coral/30" />
+        </div>
+      </div>
+
+      <div class="mt-7 rounded-3xl border-2 border-sky/40 bg-white p-6 sm:p-8">
+        <p class="font-display text-lg font-semibold text-inksoft">Your partnerships would need to average</p>
+        <p class="tnum mt-2 font-display text-6xl font-bold leading-none text-sky sm:text-7xl" id="b_out">—</p>
+        <p class="mt-2 font-display text-xl font-semibold text-ink">years per cycle</p>
+        <p class="mt-4 leading-relaxed text-inksoft" id="b_note"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator 3 -->
+  <section class="mx-auto max-w-3xl px-5 py-6 sm:px-6">
+    <div class="rounded-3xl border-2 border-leaf/40 bg-leaf/10 p-5 sm:p-8">
+      <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">3. How many do we need to start each year? 🌱</h2>
+      <p class="mt-2 leading-relaxed text-inksoft">
+        If the cycles are what they are, this is the other lever.
+      </p>
+
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        <div>
+          <label for="c_w" class="font-display text-base font-semibold text-ink">Average cycle, in years</label>
+          <input id="c_w" type="number" min="0" step="0.5" value="2" inputmode="decimal"
+                 class="tnum mt-2 w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 font-display text-xl font-semibold text-ink outline-none transition focus:border-coral focus:ring-2 focus:ring-coral/30" />
+        </div>
+        <div>
+          <label for="c_goal" class="font-display text-base font-semibold text-ink">Average operating partnerships you want</label>
+          <input id="c_goal" type="number" min="0" step="1" value="12" inputmode="decimal"
+                 class="tnum mt-2 w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 font-display text-xl font-semibold text-ink outline-none transition focus:border-coral focus:ring-2 focus:ring-coral/30" />
+        </div>
+      </div>
+
+      <div class="mt-7 rounded-3xl border-2 border-leaf/40 bg-white p-6 sm:p-8">
+        <p class="font-display text-lg font-semibold text-inksoft">You'd need to start</p>
+        <p class="tnum mt-2 font-display text-6xl font-bold leading-none text-leaf sm:text-7xl" id="c_out">—</p>
+        <p class="mt-2 font-display text-xl font-semibold text-ink">new partnerships every year</p>
+        <p class="mt-4 leading-relaxed text-inksoft" id="c_note"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why -->
+  <section class="mx-auto max-w-3xl px-5 pt-8 pb-4 sm:px-6">
+    <a href="why/" class="block rounded-3xl border-2 border-grape/30 bg-grape/5 p-6 transition hover:border-coral/50 hover:bg-coral/5 sm:p-8">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
+        <div class="text-4xl">🤔</div>
+        <div class="flex-1">
+          <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">Where this comes from</h2>
+          <p class="mt-2 leading-relaxed text-inksoft">
+            One line of math called Little's Law, which has been used to count everything from cars
+            on an assembly line to people in a waiting room. Here's how it works, what it assumes,
+            and why cycle length matters more than most schools think.
+          </p>
+          <span class="mt-4 inline-block font-display text-sm font-semibold text-coral">Read the reasoning →</span>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- District -->
+  <section class="mx-auto max-w-3xl px-5 pb-14 sm:px-6">
+    <a href="district/" class="block rounded-3xl border-2 border-coral/30 bg-coral/5 p-6 transition hover:border-coral/60 hover:bg-coral/10 sm:p-8">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
+        <div class="text-4xl">⚖️</div>
+        <div class="flex-1">
+          <h2 class="font-display text-2xl font-semibold text-ink sm:text-3xl">For districts: the equity view</h2>
+          <p class="mt-2 leading-relaxed text-inksoft">
+            Put several of your schools side by side. When some start more partnerships than others
+            and everybody gets the same cycle length, the gap between them gets wider, not narrower.
+            This tool shows you by how much, and what would close it.
+          </p>
+          <span class="mt-4 inline-block font-display text-sm font-semibold text-coral">Compare your schools →</span>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- Say hello -->
+  <section class="mx-auto max-w-3xl px-5 pb-20 sm:px-6">
+    <div class="rounded-3xl border-2 border-coral/30 bg-coral/5 p-8 text-center sm:p-10">
+      <div class="text-4xl">💌</div>
+      <h2 class="mt-3 font-display text-3xl font-semibold text-ink">About this calculator</h2>
+      <p class="mx-auto mt-3 max-w-xl leading-relaxed text-inksoft">
+        This calculator was built by <a href="../../" class="font-semibold text-coral underline-offset-2 hover:underline">Samantha Keppler</a> —
+        former high school teacher, PhD engineer, and expert in education operations. Get in touch
+        with feedback or your own partnering stories. She'd love to hear from you!
+      </p>
+      <a href="mailto:materialschoolusa@gmail.com?subject=School%20Partnership%20Calculator" class="mt-6 inline-block rounded-full bg-coral px-6 py-3 font-display text-base font-semibold text-white transition hover:bg-ink">Get in touch →</a>
+      <p class="mt-4 text-sm text-inksoft/80">
+        Or leave a voicemail at <a href="tel:+13133067476" class="font-semibold text-coral underline-offset-2 hover:underline">(313)&nbsp;306-7476</a>.
+      </p>
+    </div>
+  </section>
+
+  <footer class="mx-auto max-w-3xl px-5 py-10 text-sm text-inksoft/70 sm:px-6">
+    <a href="../" class="hover:text-coral">&larr; Back to Material School</a>
+  </footer>
+
+<script>
+  "use strict";
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  // Little's Law:  L = lambda * W
+  //   L      = average number of operating partnerships (long-run average)
+  //   lambda = new partnerships started per year
+  //   W      = average cycle, in years, before a partnership must be renewed or replaced
+  // Rearranged:  W = L / lambda   and   lambda = L / W
+  // Starting from zero, it takes about W years to build up to L.
+
+  function num(id, fallback) {
+    var v = parseFloat($(id).value);
+    return (isFinite(v) && v >= 0) ? v : fallback;
+  }
+  function round1(x) { return Math.round(x * 10) / 10; }
+  function show(x) { return round1(x).toLocaleString(); }
+  function yrs(x) {
+    var v = round1(x);
+    return v === 1 ? "1 year" : show(v) + " years";
+  }
+  function plural(x, one, many) { return round1(x) === 1 ? one : many; }
+
+  // ---- 1. lambda and W  ->  L ----
+  function updateA() {
+    var lam = num("a_lambda", 0), w = num("a_w", 0);
+    var L = lam * w;
+    $("a_out").textContent = show(L);
+    if (lam === 0 || w === 0) {
+      $("a_note").textContent = "Put a number above zero in both boxes.";
+      return;
+    }
+    $("a_note").innerHTML =
+      "Starting " + show(lam) + " " + plural(lam, "partnership", "partnerships") +
+      " a year, each lasting " + yrs(w) + " before you renew or replace it, gives you an average of <strong class='text-ink'>" +
+      show(L) + "</strong> operating partnerships. From a standing start it takes about <strong class='text-ink'>" +
+      yrs(w) + "</strong> to build up to that.";
+  }
+
+  // ---- 2. lambda and goal  ->  W ----
+  function updateB() {
+    var lam = num("b_lambda", 0), goal = num("b_goal", 0);
+    if (lam === 0 || goal === 0) {
+      $("b_out").textContent = "—";
+      $("b_note").textContent = "Put a number above zero in both boxes.";
+      return;
+    }
+    var w = goal / lam;
+    $("b_out").textContent = show(w);
+    $("b_note").innerHTML =
+      "To average " + show(goal) + " operating partnerships while starting " + show(lam) +
+      " a year, each one has to run about <strong class='text-ink'>" + yrs(w) +
+      "</strong> before it needs renewing or replacing. That's mostly your partners' call, not yours — it "
+      + "follows their funding. It is worth asking them for.";
+  }
+
+  // ---- 3. W and goal  ->  lambda ----
+  function updateC() {
+    var w = num("c_w", 0), goal = num("c_goal", 0);
+    if (w === 0 || goal === 0) {
+      $("c_out").textContent = "—";
+      $("c_note").textContent = "Put a number above zero in both boxes.";
+      return;
+    }
+    var lam = goal / w;
+    $("c_out").textContent = show(lam);
+    $("c_note").innerHTML =
+      "With cycles averaging " + yrs(w) + ", averaging " + show(goal) +
+      " operating partnerships means starting about <strong class='text-ink'>" + show(lam) +
+      "</strong> new ones every year, every year. It would take about <strong class='text-ink'>" +
+      yrs(w) + "</strong> to get there from zero.";
+  }
+
+  function updateAll() { updateA(); updateB(); updateC(); }
+
+  ["a_lambda", "a_w", "b_lambda", "b_goal", "c_w", "c_goal"].forEach(function (id) {
+    $(id).addEventListener("input", updateAll);
+  });
+
+  updateAll();
+</script>
+</body>
+</html>
