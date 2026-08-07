@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://samanthakeppler.com/sitemap.xml
