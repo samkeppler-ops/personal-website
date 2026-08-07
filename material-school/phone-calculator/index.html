@@ -291,6 +291,11 @@
 
   <footer class="mx-auto max-w-3xl px-5 py-10 text-sm text-inksoft/70 sm:px-6">
     <a href="../" class="hover:text-coral">&larr; Back to Material School</a>
+    <p class="mt-4 leading-relaxed">
+      &copy; 2026 Samantha Keppler. Cell Phone Ban Plan Calculator and Material School&trade; are her work.
+      The text, design, and code on this page are hers and may not be republished or
+      redistributed without permission. The method is set out in <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243328" class="underline-offset-2 hover:text-coral">Phones Away, but Where?</a> &mdash; please cite it rather than copy the tool.
+    </p>
   </footer>
 
 <script>
@@ -426,8 +431,11 @@
     $("serviceLabel").textContent = lockers
       ? "Seconds to retrieve a phone" : "Seconds to unlock a pouch";
     $("serviceHelp").textContent = lockers
-      ? "Walking to the unit, working the lock, taking the phone out. A minute is a fair guess."
-      : "Tapping the pouch on a dock and walking off. Twenty seconds is a fair guess.";
+      ? "Time at the locker only: the kiddo is already standing in front of their unit, and this "
+        + "is working the lock and getting the phone out. Not the walk over, not the wait. A minute "
+        + "is a fair guess."
+      : "Time at the dock only: the kiddo is already first in line, and this is tapping the pouch "
+        + "to unlock it. Not the wait to get there. Twenty seconds is a fair guess.";
     $("dockNote").innerHTML = isPooled
       ? "That's a <strong class='text-ink'>pooled queue</strong> — one line, every dock. It's why "
         + "pouches need fewer places to serve kiddos at once."
