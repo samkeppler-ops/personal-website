@@ -47,7 +47,10 @@
   <!-- Top bar -->
   <header class="sticky top-0 z-30 border-b border-sunshine/40 bg-cream/90 backdrop-blur">
     <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-      <a href="../" class="text-sm font-semibold text-inksoft transition hover:text-coral">&larr; Samantha Keppler</a>
+      <span class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-inksoft transition hover:text-coral">&larr; Samantha Keppler</a>
+        <a href="#watch" class="text-sm font-semibold text-coral transition hover:text-ink">🎥 Watch</a>
+      </span>
       <span class="flex items-center gap-2">
         <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
           <rect x="2" y="2" width="60" height="60" rx="16" fill="#ff6f5e"/>
@@ -82,6 +85,10 @@
       <p class="mt-5 max-w-2xl text-lg leading-relaxed text-inksoft">
         Material School combines research with the experiences of teachers and parents to give clear, practical guidance about how to get kiddos the supplies and materials they need to learn and thrive.
       </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#watch" class="rounded-full bg-coral px-6 py-3 font-display text-base font-semibold text-white transition hover:bg-ink">🎥 Watch the episodes</a>
+        <a href="#tools" class="rounded-full border-2 border-sky/40 px-6 py-3 font-display text-base font-semibold text-ink transition hover:border-coral/60 hover:text-coral">🧮 Try the calculators</a>
+      </div>
     </div>
   </section>
 
@@ -150,7 +157,7 @@
   </section>
 
   <!-- Tools -->
-  <section class="mx-auto max-w-4xl px-6 py-16">
+  <section id="tools" class="mx-auto max-w-4xl px-6 py-16">
     <h2 class="font-display text-3xl font-semibold text-ink">Tools you can use 🧮</h2>
     <p class="mt-3 max-w-2xl leading-relaxed text-inksoft">
       Free calculators that turn our research into a number you can take into a budget meeting.
@@ -185,62 +192,137 @@
     </a>
   </section>
 
-  <!-- The series -->
-  <section class="mx-auto max-w-4xl px-6 py-16">
-    <div class="flex flex-wrap items-center justify-between gap-3">
+  <!-- Watch -->
+  <section id="watch" class="mx-auto max-w-4xl px-6 py-16">
+    <div class="flex flex-wrap items-end justify-between gap-4">
       <div>
-        <p class="font-display text-sm font-semibold uppercase tracking-widest text-coral">🎙️ Tune in</p>
-        <h2 class="mt-2 font-display text-4xl font-bold text-ink">Three ways to listen</h2>
+        <p class="font-display text-sm font-semibold uppercase tracking-widest text-coral">🎥 Watch</p>
+        <h2 class="mt-2 font-display text-4xl font-bold text-ink">Episodes</h2>
       </div>
-      <span class="rounded-full bg-coral px-4 py-1.5 font-display text-sm font-semibold text-white">Coming soon</span>
+      <a href="https://www.youtube.com/@materialschool" target="_blank" rel="noopener" class="rounded-full bg-coral px-5 py-2.5 font-display text-sm font-semibold text-white transition hover:bg-ink">Subscribe on YouTube →</a>
     </div>
+
     <p class="mt-5 max-w-2xl leading-relaxed text-inksoft">
-      Material School comes to life in three formats about the school materials — each named for a
-      classroom ritual you probably know.
+      Every topic comes in two pieces. A <strong class="text-ink">Guest Speaker</strong> conversation with someone who
+      knows the problem first-hand, and a short <strong class="text-ink">Efficiency Eval</strong> that runs the same
+      decision through the Material School framework. Watch either one first.
     </p>
 
-    <div class="mt-10 space-y-6">
+    <div class="mt-10 space-y-8">
+
+      <!-- Cell phone bans -->
+      <article class="rounded-3xl border-2 border-sky/30 bg-sky/5 p-6 sm:p-7">
+        <div class="flex items-start gap-3">
+          <div class="text-3xl">📱</div>
+          <div>
+            <h3 class="font-display text-2xl font-semibold text-ink">Cell phone bans</h3>
+            <p class="mt-1 leading-relaxed text-inksoft">Nearly every state now tells schools to put phones away and leaves the how to them. Lockers, pouches, backpacks — what each one costs, and what breaks.</p>
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-5 sm:grid-cols-2">
+          <a href="https://www.youtube.com/watch?v=K8E9iC7niUQ" target="_blank" rel="noopener" class="group block overflow-hidden rounded-2xl bg-white/70 transition hover:bg-white">
+            <img src="https://img.youtube.com/vi/K8E9iC7niUQ/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/K8E9iC7niUQ/hqdefault.jpg'" alt="Cell Phone Bans: Material School Guest Speaker, with Monica Kress" loading="lazy" class="aspect-video w-full object-cover transition group-hover:opacity-90" />
+            <div class="p-4">
+              <span class="inline-block rounded-full bg-grape/20 px-3 py-1 font-display text-xs font-semibold uppercase tracking-wide text-ink">🎤 Guest Speaker · 25 min</span>
+              <p class="mt-2 font-display text-lg font-semibold leading-snug text-ink group-hover:text-coral">Cell Phone Bans</p>
+              <p class="mt-1 text-sm leading-relaxed text-inksoft">Monica Kress has run three versions of a ban across her schools. What each cost, and what she'd tell a district deciding today.</p>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/watch?v=LNAyj7PcFV8" target="_blank" rel="noopener" class="group block overflow-hidden rounded-2xl bg-white/70 transition hover:bg-white">
+            <img src="https://img.youtube.com/vi/LNAyj7PcFV8/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/LNAyj7PcFV8/hqdefault.jpg'" alt="Material School Efficiency Eval: Lockers vs Pouches" loading="lazy" class="aspect-video w-full object-cover transition group-hover:opacity-90" />
+            <div class="p-4">
+              <span class="inline-block rounded-full bg-leaf/25 px-3 py-1 font-display text-xs font-semibold uppercase tracking-wide text-ink">📋 Efficiency Eval · 4 min</span>
+              <p class="mt-2 font-display text-lg font-semibold leading-snug text-ink group-hover:text-coral">Lockers vs. Pouches</p>
+              <p class="mt-1 text-sm leading-relaxed text-inksoft">Why one shared line beats many separate ones when every student needs their phone back at once.</p>
+            </div>
+          </a>
+        </div>
+
+        <p class="mt-5 text-sm text-inksoft">
+          📱 Then put your own numbers in the <a href="phone-calculator/" class="font-semibold text-sky underline-offset-2 hover:underline">Cell Phone Ban Plan Calculator</a>.
+        </p>
+      </article>
+
+      <!-- AI for IEPs -->
+      <article class="rounded-3xl border-2 border-grape/30 bg-grape/5 p-6 sm:p-7">
+        <div class="flex items-start gap-3">
+          <div class="text-3xl">📝</div>
+          <div>
+            <h3 class="font-display text-2xl font-semibold text-ink">AI for IEPs</h3>
+            <p class="mt-1 leading-relaxed text-inksoft">About 15% of students have an IEP, and writing them eats enormous amounts of teacher time. AI looks like the obvious fix, and it isn't that simple.</p>
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-5 sm:grid-cols-2">
+          <a href="https://www.youtube.com/watch?v=1yanvOMq5gw" target="_blank" rel="noopener" class="group block overflow-hidden rounded-2xl bg-white/70 transition hover:bg-white">
+            <img src="https://img.youtube.com/vi/1yanvOMq5gw/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/1yanvOMq5gw/hqdefault.jpg'" alt="AI for IEPs: Material School Guest Speaker, with attorney Allison Hite" loading="lazy" class="aspect-video w-full object-cover transition group-hover:opacity-90" />
+            <div class="p-4">
+              <span class="inline-block rounded-full bg-grape/20 px-3 py-1 font-display text-xs font-semibold uppercase tracking-wide text-ink">🎤 Guest Speaker · 20 min</span>
+              <p class="mt-2 font-display text-lg font-semibold leading-snug text-ink group-hover:text-coral">AI for IEPs</p>
+              <p class="mt-1 text-sm leading-relaxed text-inksoft">Allison Hite, an attorney who advises districts, on what student data privacy law actually prohibits — and where AI still saves time.</p>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/watch?v=pY3xUEYWWNw" target="_blank" rel="noopener" class="group block overflow-hidden rounded-2xl bg-white/70 transition hover:bg-white">
+            <img src="https://img.youtube.com/vi/pY3xUEYWWNw/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/pY3xUEYWWNw/hqdefault.jpg'" alt="Material School Efficiency Eval: AI for IEPs" loading="lazy" class="aspect-video w-full object-cover transition group-hover:opacity-90" />
+            <div class="p-4">
+              <span class="inline-block rounded-full bg-leaf/25 px-3 py-1 font-display text-xs font-semibold uppercase tracking-wide text-ink">📋 Efficiency Eval · 4 min</span>
+              <p class="mt-2 font-display text-lg font-semibold leading-snug text-ink group-hover:text-coral">Stop Asking It to "Make For Me"</p>
+              <p class="mt-1 text-sm leading-relaxed text-inksoft">Using AI to plan with you needs no student data at all. Same time saved, none of the exposure.</p>
+            </div>
+          </a>
+        </div>
+      </article>
+
+      <!-- Science kits -->
+      <article class="rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-6 sm:p-7">
+        <div class="flex items-start gap-3">
+          <div class="text-3xl">🔬</div>
+          <div>
+            <h3 class="font-display text-2xl font-semibold text-ink">Elementary science kits</h3>
+            <p class="mt-1 leading-relaxed text-inksoft">Forty-nine states expect science in every elementary grade. Meeting that takes physical stuff — seeds, soil, bulbs, wires — and somebody has to buy and maintain it.</p>
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-5 sm:grid-cols-2">
+          <a href="https://www.youtube.com/watch?v=I-Pl5X4FzME" target="_blank" rel="noopener" class="group block overflow-hidden rounded-2xl bg-white/70 transition hover:bg-white">
+            <img src="https://img.youtube.com/vi/I-Pl5X4FzME/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/I-Pl5X4FzME/hqdefault.jpg'" alt="Elementary Science Kits: Material School Guest Speaker, with Professor Betsy Davis" loading="lazy" class="aspect-video w-full object-cover transition group-hover:opacity-90" />
+            <div class="p-4">
+              <span class="inline-block rounded-full bg-grape/20 px-3 py-1 font-display text-xs font-semibold uppercase tracking-wide text-ink">🎤 Guest Speaker · 26 min</span>
+              <p class="mt-2 font-display text-lg font-semibold leading-snug text-ink group-hover:text-coral">Elementary Science Kits</p>
+              <p class="mt-1 text-sm leading-relaxed text-inksoft">Betsy Davis, who chaired the National Academies committee on elementary science, on what districts actually spend and what the visible cost leaves out.</p>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/watch?v=Ig0Y8s0QtZU" target="_blank" rel="noopener" class="group block overflow-hidden rounded-2xl bg-white/70 transition hover:bg-white">
+            <img src="https://img.youtube.com/vi/Ig0Y8s0QtZU/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/Ig0Y8s0QtZU/hqdefault.jpg'" alt="Material School Efficiency Eval: Science Kits" loading="lazy" class="aspect-video w-full object-cover transition group-hover:opacity-90" />
+            <div class="p-4">
+              <span class="inline-block rounded-full bg-leaf/25 px-3 py-1 font-display text-xs font-semibold uppercase tracking-wide text-ink">📋 Efficiency Eval · 5 min</span>
+              <p class="mt-2 font-display text-lg font-semibold leading-snug text-ink group-hover:text-coral">The Trade-off Districts Are Actually Making</p>
+              <p class="mt-1 text-sm leading-relaxed text-inksoft">Kits cost money in supplies. Loose supplies cost teacher time. Which one your budget is really spending.</p>
+            </div>
+          </a>
+        </div>
+      </article>
 
       <!-- Show & Tell -->
-      <article class="rounded-3xl border-2 border-sky/30 bg-sky/5 p-7">
+      <article class="rounded-3xl border-2 border-coral/30 bg-coral/5 p-6 sm:p-7">
         <div class="flex items-start gap-4">
-          <div class="text-4xl">📮</div>
+          <div class="text-3xl">📮</div>
           <div class="flex-1">
-            <h3 class="font-display text-2xl font-semibold text-ink">Show &amp; Tell</h3>
+            <h3 class="font-display text-2xl font-semibold text-ink">Show &amp; Tell <span class="ml-1 align-middle rounded-full bg-sunshine/40 px-3 py-1 font-display text-xs font-semibold uppercase tracking-wide">Coming soon</span></h3>
             <p class="mt-2 leading-relaxed text-inksoft">Real stories from teachers, principals, and school staff about the supplies in their classrooms — the ones that changed everything, and the ones that flopped. Sent in by you.</p>
             <div class="mt-4 rounded-2xl bg-white/70 p-4 text-sm">
               <p class="font-bold text-ink">📣 Share your story</p>
-              <p class="mt-1 text-inksoft">Email <a href="mailto:materialschoolusa@gmail.com" class="font-semibold text-sky underline-offset-2 hover:underline">materialschoolusa@gmail.com</a> &mdash; or leave a voicemail at <a href="tel:+13133067476" class="font-semibold text-sky underline-offset-2 hover:underline">(313)&nbsp;306-7476</a>.</p>
+              <p class="mt-1 text-inksoft">Email <a href="mailto:materialschoolusa@gmail.com" class="font-semibold text-coral underline-offset-2 hover:underline">materialschoolusa@gmail.com</a> &mdash; or leave a voicemail at <a href="tel:+13133067476" class="font-semibold text-coral underline-offset-2 hover:underline">(313)&nbsp;306-7476</a>.</p>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Report Card -->
-      <article class="rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-7">
-        <div class="flex items-start gap-4">
-          <div class="text-4xl">📋</div>
-          <div class="flex-1">
-            <h3 class="font-display text-2xl font-semibold text-ink">Report Card</h3>
-            <p class="mt-2 leading-relaxed text-inksoft">I take a single classroom supply and run it through the material school framework---Buying One versus Buying Many---and give it a grade.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- Guest Speakers -->
-      <article class="rounded-3xl border-2 border-grape/30 bg-grape/5 p-7">
-        <div class="flex items-start gap-4">
-          <div class="text-4xl">🎤</div>
-          <div class="flex-1">
-            <h3 class="font-display text-2xl font-semibold text-ink">Guest Speakers</h3>
-            <p class="mt-2 leading-relaxed text-inksoft">Conversations with experts who have something important to say about what it will take to make sure our kiddos get a material education. </p>
-          </div>
-        </div>
-      </article>
-
     </div>
-
-    <p class="mt-6 text-sm italic text-inksoft/70">First episodes coming soon — check back to listen. 🎧</p>
   </section>
 
   <!-- Get involved -->
