@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../logo.svg" type="image/svg+xml" />
+  <title>For Parents — Material School</title>
+  <meta name="description" content="Parent groups working on phones in school, smartphones at home, and screens in the classroom." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'system-ui', 'sans-serif'],
+            body: ['Nunito', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream: '#fffaf0',
+            sunshine: '#ffcf4d',
+            coral: '#ff6f5e',
+            sky: '#4ea8de',
+            leaf: '#7cc242',
+            grape: '#9b6dd1',
+            ink: '#3b3a45',
+            inksoft: '#6e6a78',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { -webkit-font-smoothing: antialiased; }
+    body { background-color: #fffaf0; }
+    /* hand-drawn-ish underline */
+    .squiggle { text-decoration: underline wavy #ffcf4d; text-underline-offset: 6px; text-decoration-thickness: 3px; }
+  </style>
+</head>
+
+<body class="font-body text-ink antialiased">
+
+  <!-- Top bar -->
+  <header class="sticky top-0 z-30 border-b border-sunshine/40 bg-cream/90 backdrop-blur">
+    <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+      <span class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-inksoft transition hover:text-coral">&larr; Material School</a>
+        <a href="../#watch" class="text-sm font-semibold text-coral transition hover:text-ink">🎥 Watch</a>
+      </span>
+      <span class="flex items-center gap-2">
+        <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
+          <rect x="2" y="2" width="60" height="60" rx="16" fill="#ff6f5e"/>
+          <g transform="rotate(35 32 32)">
+            <rect x="27" y="13" width="10" height="6" rx="2" fill="#ffd1d6"/>
+            <rect x="27" y="19" width="10" height="3" fill="#eee7da"/>
+            <rect x="27" y="22" width="10" height="19" fill="#fffaf0"/>
+            <path d="M27 41 H37 L32 52 Z" fill="#f4d9a0"/>
+            <path d="M30.2 47.6 H33.8 L32 52 Z" fill="#3b3a45"/>
+          </g>
+        </svg>
+        <span class="font-display text-base font-bold text-ink">Material&nbsp;School</span>
+      </span>
+    </div>
+  </header>
+
+  
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute -right-16 -top-10 h-48 w-48 rounded-full bg-coral/20"></div>
+    <div class="relative mx-auto max-w-4xl px-6 pb-6 pt-16">
+      <span class="inline-block rounded-full bg-sunshine/30 px-4 py-1.5 font-display text-sm font-semibold text-ink">👪 For parents</span>
+      <h1 class="mt-5 font-display text-5xl font-bold leading-tight text-ink">Groups working on screens and kids</h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-inksoft">Parents across the country are organizing around phones in school, smartphones at home, and screens in the classroom. These groups share policy trackers, pledges, and ways to get involved.</p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-10">
+    <h2 class="font-display text-3xl font-semibold text-ink">Phones and smartphones 📵</h2>
+    <div class="mt-6 space-y-4">
+      <a href="https://www.distractionfreeschools.org/" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-sky/30 bg-sky/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">🏫</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">Distraction-Free Schools</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">Tracks phone policy work in every state. See their phone-free schools section.</p>
+          </div>
+        </div>
+      </a>
+      <a href="https://smartphonefreechildhoodus.com/" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">🧒</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">Smartphone Free Childhood US</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">A parent movement to delay smartphones. They run an active WhatsApp group you can ask to join.</p>
+          </div>
+        </div>
+      </a>
+      <a href="https://www.waituntil8th.org/" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-grape/30 bg-grape/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">⏳</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">Wait Until 8th</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">A pledge to wait on a smartphone until at least the end of 8th grade. It takes effect once ten families from your child&rsquo;s grade and school sign.</p>
+          </div>
+        </div>
+      </a>
+      <a href="https://www.anxiousgeneration.com/" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-coral/30 bg-coral/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">📖</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">The Anxious Generation movement</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">Grew out of Jonathan Haidt&rsquo;s book. Four norms: no smartphones before high school, no social media before 16, phone-free schools, and more independent play.</p>
+          </div>
+        </div>
+      </a>
+      <a href="https://wearemama.org/" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-sky/30 bg-sky/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">👩‍👧</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">Mothers Against Media Addiction (MAMA)</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">A parent-led group with local chapters, working on phone-free schools and online safety for kids.</p>
+          </div>
+        </div>
+      </a>
+      <a href="https://www.screenstrong.org/" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">💪</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">ScreenStrong</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">Guidance for families on delaying smartphones, social media, and video games at home.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-10">
+    <h2 class="font-display text-3xl font-semibold text-ink">Screens and AI in the classroom 💻</h2>
+    <div class="mt-6 space-y-4">
+      <a href="https://docs.google.com/document/d/1T1Gsgcen7ma4S3h-me_LN-HzQIckkq6BKyw_JKRskQA/edit?tab=t.0" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-coral/30 bg-coral/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">📂</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">Schools Beyond Screens EdTech Resource Library</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">A shared library of EdTech resources from Schools Beyond Screens and Distraction-Free Schools. Their EdTech and AI work group meets online the 2nd and 4th Wednesday of each month at noon Eastern.</p>
+          </div>
+        </div>
+      </a>
+      <a href="https://www.techsafelearning.org/" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-grape/30 bg-grape/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">🛡️</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">Tech-Safe Learning Coalition</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">Parents and educators asking schools to make sure the technology students use is safe and shown to help learning.</p>
+          </div>
+        </div>
+      </a>
+      <a href="https://screentimenetwork.org/" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-sky/30 bg-sky/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">🌐</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">Children&rsquo;s Screen Time Action Network</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">A network from Fairplay for parents, educators, and clinicians working on kids and screens, including EdTech in schools.</p>
+          </div>
+        </div>
+      </a>
+      <a href="https://iste-ascd.org/safe-and-purposeful-pledge" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">✅</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">Safe &amp; Purposeful EdTech School Pledge</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">From ISTE+ASCD. Schools and districts sign it to commit to safe, purposeful technology use and family involvement. You can ask whether your school has signed.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-10">
+    <h2 class="font-display text-3xl font-semibold text-ink">Play and independence 🛝</h2>
+    <div class="mt-6 space-y-4">
+      <a href="https://letgrow.org/" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-coral/30 bg-coral/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">🌱</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">Let Grow</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">Free programs for schools and families that give kids more unstructured play and independence.</p>
+          </div>
+        </div>
+      </a>
+      <a href="https://www.childrenandscreens.org/" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-grape/30 bg-grape/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">🔬</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">Children and Screens</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">Research summaries and expert webinars on how digital media affects child development.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-10">
+    <h2 class="font-display text-3xl font-semibold text-ink">In Ann Arbor 🌳</h2>
+    <div class="mt-6 space-y-4">
+      <a href="https://www.screenwisea2.org/" target="_blank" rel="noopener" class="block rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-6 transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">🤝</div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl font-semibold text-ink">ScreenWise Ann Arbor Parent Pact</h3>
+            <p class="mt-1 text-sm leading-relaxed text-inksoft">Families agree to delay smartphones and social media together. You can see who has already signed.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer class="mx-auto max-w-4xl px-6 py-10 text-sm text-inksoft/70">
+    <a href="../" class="hover:text-coral">&larr; Back to Material School</a>
+  </footer>
+
+</body>
+</html>

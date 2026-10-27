@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../logo.svg" type="image/svg+xml" />
+  <title>Material-Based Thinking — a framework for business education</title>
+  <meta name="description" content="Material-Based Thinking (MBT) is a framework for business education from Samantha Keppler and the Material School Initiative at Michigan Ross. Four actions — asking, listening, drawing or building, and moving — done away from screens, in sequence with technology and AI." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'system-ui', 'sans-serif'],
+            body: ['Nunito', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream: '#fffaf0',
+            sunshine: '#ffcf4d',
+            coral: '#ff6f5e',
+            sky: '#4ea8de',
+            leaf: '#7cc242',
+            grape: '#9b6dd1',
+            ink: '#3b3a45',
+            inksoft: '#6e6a78',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { -webkit-font-smoothing: antialiased; }
+    body { background-color: #fffaf0; }
+    .squiggle { text-decoration: underline wavy #ffcf4d; text-underline-offset: 6px; text-decoration-thickness: 3px; }
+    @media print {
+      @page { size: letter; margin: 0.6in 0.65in; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      .no-print { display: none !important; }
+      body { background: #fff; font-size: 10.5pt; }
+      section { padding-top: 0 !important; padding-bottom: 0 !important; }
+      section > div, section > .mx-auto { padding: 0 !important; max-width: 100% !important; }
+      header + section { margin-bottom: 4pt; }
+      h1 { font-size: 30pt !important; line-height: 1.05 !important; }
+      h2 { font-size: 15pt !important; }
+      h3 { font-size: 13pt !important; }
+      article, .print-keep { break-inside: avoid; page-break-inside: avoid; }
+      article { padding: 14pt !important; }
+      .space-y-6 > * + * { margin-top: 10pt !important; }
+      .print-plain { padding: 14pt !important; }
+      figure svg { max-width: 3.55in !important; }
+      figure figcaption { font-size: 8.5pt !important; }
+      .print-keep { margin-top: 6pt !important; }
+      h1 { margin-top: 0 !important; }
+      /* page 1 = title, intro, diagram; page 2 = the four actions */
+      #actions { break-before: page; page-break-before: always; }
+      #actions article { padding: 10pt !important; }
+      #actions article p:last-child { font-size: 9.5pt !important; line-height: 1.45 !important; }
+      #actions .space-y-6 > * + * { margin-top: 8pt !important; }
+      #cite .no-print-block { display: none !important; }
+      #cite { border-color: #e6e1ee !important; background: #fff !important; padding: 8pt !important; margin-top: 10pt !important; }
+      #cite p { font-size: 8.5pt !important; margin: 0 !important; }
+    }
+  </style>
+</head>
+
+<body class="font-body text-ink antialiased">
+
+  <!-- Top bar -->
+  <header class="no-print sticky top-0 z-30 border-b border-sunshine/40 bg-cream/90 backdrop-blur">
+    <div class="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
+      <a href="../" class="text-sm font-semibold text-inksoft transition hover:text-coral">&larr; Material School</a>
+      <span class="flex items-center gap-2">
+        <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
+          <rect x="2" y="2" width="60" height="60" rx="16" fill="#ff6f5e"/>
+          <g transform="rotate(35 32 32)">
+            <rect x="27" y="13" width="10" height="6" rx="2" fill="#ffd1d6"/>
+            <rect x="27" y="19" width="10" height="3" fill="#eee7da"/>
+            <rect x="27" y="22" width="10" height="19" fill="#fffaf0"/>
+            <path d="M27 41 H37 L32 52 Z" fill="#f4d9a0"/>
+            <path d="M30.2 47.6 H33.8 L32 52 Z" fill="#3b3a45"/>
+          </g>
+        </svg>
+        <span class="font-display text-base font-bold text-ink">Material&nbsp;School</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="no-print pointer-events-none absolute -right-16 -top-10 h-56 w-56 rounded-full bg-leaf/20"></div>
+    <div class="no-print pointer-events-none absolute right-24 top-32 h-20 w-20 rounded-full bg-sky/25"></div>
+    <div class="no-print pointer-events-none absolute -left-10 top-28 h-28 w-28 rounded-full bg-coral/15"></div>
+
+    <div class="relative mx-auto max-w-3xl px-6 py-16 sm:py-20">
+      <span class="inline-block rounded-full bg-sunshine/30 px-4 py-1.5 font-display text-sm font-semibold text-ink">✏️ A framework for business education</span>
+      <h1 class="mt-6 font-display text-5xl font-bold leading-[1.05] text-ink sm:text-6xl">
+        Material-Based<br />Thinking
+      </h1>
+      <p class="mt-6 font-display text-xl font-medium text-inksoft">
+        Four actions, done <span class="squiggle">away from the screen</span>.
+      </p>
+      <p class="mt-6 text-sm text-inksoft">
+        By <a href="../../" class="font-semibold text-coral underline-offset-2 hover:underline">Samantha Keppler</a>,
+        from the Material School Initiative at Michigan Ross &middot; September 2026
+      </p>
+    </div>
+  </section>
+
+  <!-- What it is -->
+  <section class="mx-auto max-w-3xl px-6 pb-4">
+    <div class="print-plain rounded-3xl border-2 border-sunshine/40 bg-sunshine/10 p-7 sm:p-8">
+      <p class="text-lg leading-relaxed text-ink">
+        Material-Based Thinking (MBT) is a critical part of the learning process, in classrooms and in the field.
+        Understanding is enhanced and outcomes improve when MBT is part of the process. It is best done in
+        technology-free spaces but can be done whenever humans have technology-free periods of time. It is meant to
+        be done in sequence with technology and AI use, either before, after, or in between.
+      </p>
+    </div>
+  </section>
+
+  <!-- The diagram -->
+  <section class="mx-auto max-w-3xl px-6 pt-10 print:pt-0">
+    <figure class="print-keep">
+      <svg viewBox="0 0 640 560" class="mx-auto block h-auto w-full max-w-xl" role="img"
+           aria-label="Material-Based Thinking sits at the centre of four overlapping circles — Asking, Listening, Drawing or Building, and Moving — all within a technology-free environment.">
+        <defs>
+          <style>
+            .lbl { font-family: Fredoka, system-ui, sans-serif; font-weight: 600; }
+          </style>
+        </defs>
+
+        <!-- Technology-free frame -->
+        <rect x="60" y="24" width="520" height="512" rx="30" fill="none" stroke="#ffcf4d" stroke-width="3" stroke-dasharray="9 7" />
+        <rect x="205" y="8" width="230" height="32" rx="16" fill="#fffaf0" />
+        <text x="320" y="29" text-anchor="middle" class="lbl" font-size="14" letter-spacing="1.6" fill="#6e6a78">TECHNOLOGY-FREE ENVIRONMENT</text>
+
+        <!-- Four actions -->
+        <circle cx="320" cy="178" r="84" fill="#4ea8de" fill-opacity="0.30" stroke="#4ea8de" stroke-width="2.5" />
+        <circle cx="452" cy="310" r="84" fill="#7cc242" fill-opacity="0.30" stroke="#7cc242" stroke-width="2.5" />
+        <circle cx="320" cy="442" r="84" fill="#ff6f5e" fill-opacity="0.30" stroke="#ff6f5e" stroke-width="2.5" />
+        <circle cx="188" cy="310" r="84" fill="#9b6dd1" fill-opacity="0.30" stroke="#9b6dd1" stroke-width="2.5" />
+
+        <!-- Centre -->
+        <circle cx="320" cy="310" r="96" fill="#ffcf4d" fill-opacity="0.75" stroke="#3b3a45" stroke-width="2.5" />
+
+        <!-- Labels -->
+        <text x="320" y="146" text-anchor="middle" class="lbl" font-size="18" fill="#3b3a45">Asking</text>
+        <text x="487" y="316" text-anchor="middle" class="lbl" font-size="18" fill="#3b3a45">Listening</text>
+        <text x="320" y="487" text-anchor="middle" class="lbl" font-size="18" fill="#3b3a45">Drawing</text>
+        <text x="320" y="508" text-anchor="middle" class="lbl" font-size="18" fill="#3b3a45">or Building</text>
+        <text x="153" y="316" text-anchor="middle" class="lbl" font-size="18" fill="#3b3a45">Moving</text>
+
+        <text x="320" y="303" text-anchor="middle" class="lbl" font-size="20" fill="#3b3a45">Material-Based</text>
+        <text x="320" y="328" text-anchor="middle" class="lbl" font-size="20" fill="#3b3a45">Thinking</text>
+      </svg>
+      <figcaption class="mt-3 text-center text-sm text-inksoft">
+        The four actions overlap and repeat, and all of them happen away from a screen.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- The four actions -->
+  <section id="actions" class="mx-auto max-w-3xl px-6 py-12">
+    <h2 class="font-display text-3xl font-semibold text-ink">MBT involves four actions</h2>
+
+    <div class="mt-8 space-y-6">
+
+      <article class="print-plain rounded-3xl border-2 border-sky/30 bg-sky/5 p-7">
+        <div class="flex items-start gap-4">
+          <div class="text-4xl" aria-hidden="true">🙋</div>
+          <div class="flex-1">
+            <p class="font-display text-sm font-semibold uppercase tracking-widest text-sky">Action one</p>
+            <h3 class="mt-1 font-display text-2xl font-semibold text-ink">Asking</h3>
+            <p class="mt-3 leading-relaxed text-inksoft">
+              Asking questions of teammates, customers, or other humans who have relevant information and experiences
+              to the problem or question at hand. It means preferring open questions to ones that invite a yes or no,
+              and treating the first answer as the beginning rather than the end of an exchange. Good asking is
+              specific, unhurried, and willing to look uninformed in front of someone who knows more.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="print-plain rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-7">
+        <div class="flex items-start gap-4">
+          <div class="text-4xl" aria-hidden="true">👂</div>
+          <div class="flex-1">
+            <p class="font-display text-sm font-semibold uppercase tracking-widest text-leaf">Action two</p>
+            <h3 class="mt-1 font-display text-2xl font-semibold text-ink">Listening</h3>
+            <p class="mt-3 leading-relaxed text-inksoft">
+              Listening to the information and experiences shared by others. It includes letting an answer change the
+              question that follows, noticing what a person does not say or declines to say, and recording their words
+              rather than a paraphrase already shaped toward a conclusion. Notes taken by hand help here, because the
+              slower pace forces selection and keeps attention on the speaker.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="print-plain rounded-3xl border-2 border-coral/30 bg-coral/5 p-7">
+        <div class="flex items-start gap-4">
+          <div class="text-4xl" aria-hidden="true">✏️</div>
+          <div class="flex-1">
+            <p class="font-display text-sm font-semibold uppercase tracking-widest text-coral">Action three</p>
+            <h3 class="mt-1 font-display text-2xl font-semibold text-ink">Drawing or Building</h3>
+            <p class="mt-3 leading-relaxed text-inksoft">
+              Using human brains and hands to draw non-digital diagrams, make lists or tables, or build prototypes from
+              available materials — paper, whiteboards, sticky notes, index cards, cardboard, tape, string, blocks, and
+              the actual objects under study. The output might be a process map, a floor layout, a decision table, a
+              sketch of an interface, or a working physical mock-up.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="print-plain rounded-3xl border-2 border-grape/30 bg-grape/5 p-7">
+        <div class="flex items-start gap-4">
+          <div class="text-4xl" aria-hidden="true">👣</div>
+          <div class="flex-1">
+            <p class="font-display text-sm font-semibold uppercase tracking-widest text-grape">Action four</p>
+            <h3 class="mt-1 font-display text-2xl font-semibold text-ink">Moving</h3>
+            <p class="mt-3 leading-relaxed text-inksoft">
+              Moving the body through physical spaces, both to collect information through observation and to reflect
+              on current thinking. This includes site visits, tracing a single unit from one end of a process to the
+              other, or walking meetings where a problem is discussed away from a table and a screen.
+            </p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Cite -->
+  <section class="mx-auto max-w-3xl px-6 pb-20">
+    <div id="cite" class="print-plain rounded-3xl border-2 border-grape/30 bg-grape/5 p-7 text-center">
+      <div class="no-print-block text-3xl" aria-hidden="true">💌</div>
+      <h2 class="no-print-block mt-2 font-display text-2xl font-semibold text-ink">Using this in your teaching?</h2>
+      <p class="no-print-block mx-auto mt-3 max-w-xl leading-relaxed text-inksoft">
+        I'd like to hear how it goes — what you ran, what worked, and what you'd change.
+      </p>
+      <a href="mailto:materialschoolusa@gmail.com" class="no-print mt-5 inline-block rounded-full bg-coral px-6 py-3 font-display text-base font-semibold text-white transition hover:bg-ink">Get in touch →</a>
+      <p class="mt-6 text-xs leading-relaxed text-inksoft/80">
+        Keppler, S. (2026). <em>Material-Based Thinking (MBT) Framework for Business Education.</em>
+        Material School Initiative, University of Michigan Ross School of Business.
+      </p>
+    </div>
+  </section>
+
+  <footer class="no-print mx-auto max-w-3xl px-6 pb-10 text-sm text-inksoft/70">
+    <a href="../" class="hover:text-coral">&larr; Back to Material School</a>
+  </footer>
+
+</body>
+</html>

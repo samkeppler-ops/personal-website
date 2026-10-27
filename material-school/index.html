@@ -35,7 +35,8 @@
     };
   </script>
   <style>
-    html { -webkit-font-smoothing: antialiased; }
+    html { -webkit-font-smoothing: antialiased; scroll-padding-top: 5rem; }
+    a:focus-visible { outline: 3px solid #4ea8de; outline-offset: 3px; border-radius: 1rem; }
     body { background-color: #fffaf0; }
     /* hand-drawn-ish underline */
     .squiggle { text-decoration: underline wavy #ffcf4d; text-underline-offset: 6px; text-decoration-thickness: 3px; }
@@ -50,6 +51,7 @@
       <span class="flex items-center gap-4">
         <a href="../" class="text-sm font-semibold text-inksoft transition hover:text-coral">&larr; Samantha Keppler</a>
         <a href="#watch" class="text-sm font-semibold text-coral transition hover:text-ink">🎥 Watch</a>
+        <a href="#tools" class="text-sm font-semibold text-coral transition hover:text-ink">🧮 Calculators</a>
       </span>
       <span class="flex items-center gap-2">
         <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
@@ -74,7 +76,7 @@
     <div class="pointer-events-none absolute right-24 top-32 h-20 w-20 rounded-full bg-leaf/30"></div>
     <div class="pointer-events-none absolute -left-10 top-24 h-28 w-28 rounded-full bg-coral/15"></div>
 
-    <div class="relative mx-auto max-w-4xl px-6 py-20 sm:py-24">
+    <div class="relative mx-auto max-w-4xl px-6 pb-6 pt-16 sm:pt-20">
       <span class="inline-block rounded-full bg-sunshine/30 px-4 py-1.5 font-display text-sm font-semibold text-ink">🍎 An initiative by Samantha Keppler</span>
       <h1 class="mt-6 font-display text-6xl font-bold leading-[1.0] text-ink sm:text-7xl">
         Material<br />School
@@ -92,52 +94,10 @@
     </div>
   </section>
 
-  <!-- Who it's for -->
-  <section class="mx-auto max-w-4xl px-6 py-14">
-    <h2 class="text-center font-display text-3xl font-semibold text-ink">Who it's for</h2>
-    <p class="mx-auto mt-3 max-w-xl text-center text-inksoft">Real decision-support for the people making everyday choices for kids.</p>
-    <div class="mt-10 grid gap-6 sm:grid-cols-3">
-      <div class="rounded-3xl border-2 border-sky/30 bg-sky/5 p-7 text-center">
-        <div class="text-5xl">🏫</div>
-        <h3 class="mt-4 font-display text-xl font-semibold text-ink">Education Leaders</h3>
-        <p class="mt-2 text-sm leading-relaxed text-inksoft">How to prioritize material learning by buying physical supplies for kiddos cheaply and quickly.</p>
-      </div>
-      <div class="rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-7 text-center">
-        <div class="text-5xl">👩‍🏫</div>
-        <h3 class="mt-4 font-display text-xl font-semibold text-ink">Teachers</h3>
-        <p class="mt-2 text-sm leading-relaxed text-inksoft">Practical, evidence-backed recommendations for creating a material classroom.</p>
-      </div>
-      <div class="rounded-3xl border-2 border-coral/30 bg-coral/5 p-7 text-center">
-        <div class="text-5xl">👪</div>
-        <h3 class="mt-4 font-display text-xl font-semibold text-ink">Parents</h3>
-        <p class="mt-2 text-sm leading-relaxed text-inksoft">How to support a hands-on, material education at home — beyond the screens.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Manifesto -->
-  <section class="bg-sunshine/15">
-    <div class="mx-auto max-w-4xl px-6 py-16">
-      <h2 class="font-display text-3xl font-semibold text-ink">Our manifesto 💡</h2>
-      <div class="mt-5 max-w-2xl space-y-5 text-lg leading-relaxed text-inksoft">
-        <p>
-          It feels like the world is rushing to put everything on a screen. Material School is about the <strong class="text-ink">material</strong> —
-          the books, paper, supplies, spaces, and hands-on tools that help children learn — and how to give every
-          student a material education in the AI era.
-        </p>
-      </div>
-      <blockquote class="mt-6 max-w-2xl border-l-4 border-coral pl-5 font-display text-xl font-medium italic leading-snug text-ink">
-        Let's figure out, together, the physical tools, materials, and supplies our kids most need to learn. By
-        pairing rigorous research with real stories from the front lines, we're building a material school for the
-        AI era.
-      </blockquote>
-    </div>
-  </section>
-
   <!-- Three pillars -->
-  <section class="mx-auto max-w-4xl px-6 py-16">
-    <h2 class="font-display text-3xl font-semibold text-ink">Three pillars</h2>
-    <div class="mt-8 grid gap-6 sm:grid-cols-3">
+  <section class="mx-auto max-w-4xl px-6 pb-8 pt-6">
+    <h2 class="text-center font-display text-3xl font-semibold text-ink">Three pillars</h2>
+    <div class="mt-6 grid gap-6 sm:grid-cols-3">
       <div class="rounded-3xl border-2 border-sky/30 bg-sky/5 p-7">
         <div class="text-4xl">🎒</div>
         <h3 class="mt-4 font-display text-xl font-semibold text-ink">Smarter supply choices</h3>
@@ -153,6 +113,31 @@
         <h3 class="mt-4 font-display text-xl font-semibold text-ink">Technology supports</h3>
         <p class="mt-2 text-sm leading-relaxed text-inksoft">Using technology and AI — often behind the scenes by adults — to strengthen hands-on, material learning.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section id="who" class="mx-auto max-w-4xl px-6 pb-14 pt-6">
+    <h2 class="text-center font-display text-3xl font-semibold text-ink">Resources for</h2>
+    <div class="mt-6 grid gap-6 sm:grid-cols-3">
+      <a href="leaders/" class="block rounded-3xl border-2 border-sky/30 bg-sky/5 p-7 text-center transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="text-5xl">🏫</div>
+        <h3 class="mt-4 font-display text-xl font-semibold text-ink">Education Leaders</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">Research and calculators for deciding what to buy.</p>
+        <span class="mt-4 inline-block font-display text-sm font-semibold text-coral">Start here →</span>
+      </a>
+      <a href="teachers/" class="block rounded-3xl border-2 border-leaf/30 bg-leaf/5 p-7 text-center transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="text-5xl">👩‍🏫</div>
+        <h3 class="mt-4 font-display text-xl font-semibold text-ink">Teachers</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">Evidence for your district, and where to get supplies.</p>
+        <span class="mt-4 inline-block font-display text-sm font-semibold text-coral">Start here →</span>
+      </a>
+      <a href="parents/" class="block rounded-3xl border-2 border-coral/30 bg-coral/5 p-7 text-center transition hover:border-coral/50 hover:bg-coral/5">
+        <div class="text-5xl">👪</div>
+        <h3 class="mt-4 font-display text-xl font-semibold text-ink">Parents</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inksoft">Groups working on phones and screens.</p>
+        <span class="mt-4 inline-block font-display text-sm font-semibold text-coral">Start here →</span>
+      </a>
     </div>
   </section>
 
@@ -312,7 +297,7 @@
         <div class="flex items-start gap-4">
           <div class="text-3xl">📮</div>
           <div class="flex-1">
-            <h3 class="font-display text-2xl font-semibold text-ink">Show &amp; Tell <span class="ml-1 align-middle rounded-full bg-sunshine/40 px-3 py-1 font-display text-xs font-semibold uppercase tracking-wide">Coming soon</span></h3>
+            <h3 class="font-display text-2xl font-semibold text-ink">Show &amp; Tell</h3>
             <p class="mt-2 leading-relaxed text-inksoft">Real stories from teachers, principals, and school staff about the supplies in their classrooms — the ones that changed everything, and the ones that flopped. Sent in by you.</p>
             <div class="mt-4 rounded-2xl bg-white/70 p-4 text-sm">
               <p class="font-bold text-ink">📣 Share your story</p>
