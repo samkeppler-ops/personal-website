@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="MBA Recruiting logo">
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="#ffcb05"/>
+  <!-- briefcase -->
+  <path d="M25 33 V28.5 a2.5 2.5 0 0 1 2.5 -2.5 H36.5 a2.5 2.5 0 0 1 2.5 2.5 V33" fill="none" stroke="#00274c" stroke-width="3" stroke-linecap="round"/>
+  <rect x="12" y="32" width="40" height="21" rx="4.5" fill="#00274c"/>
+  <path d="M12 41.5 H52" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
+  <rect x="28.5" y="38.5" width="7" height="6" rx="1.8" fill="#ffcb05"/>
+  <!-- graduation cap, tipped on top -->
+  <g transform="rotate(-14 32 18)">
+    <path d="M24 19.5 V24 Q32 27.5 40 24 V19.5 Z" fill="#0b3a66"/>
+    <path d="M14 17 L32 10 L50 17 L32 24 Z" fill="#00274c"/>
+    <path d="M32 17 L46 19.5 V27" fill="none" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/>
+    <circle cx="46" cy="28" r="1.9" fill="#ffffff"/>
+    <circle cx="32" cy="17" r="1.4" fill="#ffffff"/>
+  </g>
+</svg>
